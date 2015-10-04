@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>ru.card.call.ambulance</groupId>
+        <artifactId>cca-mgmt</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>cca-mgmt-ear</artifactId>
+    <name>CCA Management EAR module</name>
+    <packaging>ear</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>ru.card.call.ambulance</groupId>
+            <artifactId>cca-mgmt-domain</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>ru.card.call.ambulance</groupId>
+            <artifactId>cca-mgmt-service</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>ru.card.call.ambulance</groupId>
+            <artifactId>cca-mgmt-service-war</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- ear plugin -->
+            <plugin>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <finalName>${ear.final.name}</finalName>
+                    <earSourceDirectory>src/main/app</earSourceDirectory>
+                    <defaultLibBundleDir>APP-INF/lib</defaultLibBundleDir>
+                    <archive>
+                        <manifestEntries>
+                            <cca-mgmt-version>${project.version}</cca-mgmt-version>
+                            <Implementation-Build>${buildNumber}</Implementation-Build>
+                            <Implementation-Version>${project.version}_${buildNumber}</Implementation-Version>
+                            <Component-Name>${project.parent.name}</Component-Name>
+                            <Component-Binary-Version>${project.parent.version}</Component-Binary-Version>
+                        </manifestEntries>
+                    </archive>
+                    <modules>
+                        <ejbModule>
+                            <groupId>ru.card.call.ambulance</groupId>
+                            <artifactId>cca-mgmt-domain</artifactId>
+                        </ejbModule>
+                        <ejbModule>
+                            <groupId>ru.card.call.ambulance</groupId>
+                            <artifactId>cca-mgmt-service</artifactId>
+                        </ejbModule>
+                        <webModule>
+                            <groupId>ru.card.call.ambulance</groupId>
+                            <artifactId>cca-mgmt-service-war</artifactId>
+                            <contextRoot>/cca/cards</contextRoot>
+                        </webModule>
+                    </modules>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>${project.artifactId}</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>${project.packaging}</type>
+                                    <destFileName>${ear.final.name}.${project.packaging}</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>${deploy.dir}</outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

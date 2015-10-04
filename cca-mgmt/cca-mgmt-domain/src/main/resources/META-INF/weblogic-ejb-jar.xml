@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<weblogic-ejb-jar>
+
+    <security-role-assignment>
+        <role-name>CCA_ROLE</role-name>
+        <principal-name>CCA_USER</principal-name>
+    </security-role-assignment>
+
+    <run-as-role-assignment>
+        <role-name>CCA_ROLE</role-name>
+        <run-as-principal-name>CCA_USER</run-as-principal-name>
+    </run-as-role-assignment>
+</weblogic-ejb-jar>
