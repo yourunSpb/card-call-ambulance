@@ -17,11 +17,6 @@
         <module>cca-mgmt-service</module>
         <module>cca-mgmt-service-war</module>
         <module>cca-mgmt-ear</module>
-        <module>cca-mgmt-contracts</module>
-        <module>cca-mgmt-domain</module>
-        <module>cca-mgmt-service</module>
-        <module>cca-mgmt-service-war</module>
-        <module>cca-mgmt-ear</module>
     </modules>
 
     <properties>
