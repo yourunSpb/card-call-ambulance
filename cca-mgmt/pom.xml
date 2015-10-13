@@ -20,6 +20,8 @@
     </modules>
 
     <properties>
+        <ear.final.name>cca-mgmt</ear.final.name>
+        <build.number>0.1</build.number>
         <!-- Project -->
         <project.version>1.0</project.version>
         <project.dbVersion>7</project.dbVersion>
@@ -83,7 +85,7 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>weblogic</groupId>
+                <groupId>com.sun.xml.ws</groupId>
                 <artifactId>jaxws-rt</artifactId>
                 <version>${jaxws-rt.version}</version>
                 <optional>true</optional>

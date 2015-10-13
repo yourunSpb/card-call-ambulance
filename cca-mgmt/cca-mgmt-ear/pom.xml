@@ -47,8 +47,8 @@
                     <archive>
                         <manifestEntries>
                             <cca-mgmt-version>${project.version}</cca-mgmt-version>
-                            <Implementation-Build>${buildNumber}</Implementation-Build>
-                            <Implementation-Version>${project.version}_${buildNumber}</Implementation-Version>
+                            <Implementation-Build>${build.number}</Implementation-Build>
+                            <Implementation-Version>${project.version}_${build.number}</Implementation-Version>
                             <Component-Name>${project.parent.name}</Component-Name>
                             <Component-Binary-Version>${project.parent.version}</Component-Binary-Version>
                         </manifestEntries>
