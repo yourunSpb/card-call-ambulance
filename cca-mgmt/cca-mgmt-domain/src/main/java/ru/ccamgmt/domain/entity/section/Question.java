@@ -4,7 +4,21 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import ru.ccamgmt.domain.entity.ServiceCoreConstants;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -118,6 +132,7 @@ public class Question implements Serializable {
                 .append(section, question.section)
                 .append(questionOrder, question.questionOrder)
                 .append(questionText, question.questionText)
+                .append(answerType, question.answerType)
                 .isEquals();
     }
 
@@ -128,6 +143,7 @@ public class Question implements Serializable {
                 .append(section)
                 .append(questionOrder)
                 .append(questionText)
+                .append(answerType)
                 .toHashCode();
     }
 
@@ -138,6 +154,7 @@ public class Question implements Serializable {
                 ", section'" + section + '\'' +
                 ", questionOrder='" + questionOrder + '\'' +
                 ", questionText='" + questionText + '\'' +
+                ", answerType='" + answerType + '\'' +
                 '}';
     }
 }
