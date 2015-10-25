@@ -1,7 +1,7 @@
 package ru.ccamgmt.domain.exception;
 
 /**
- * Created by Владимир on 13.10.2015.
+ * Created by Yuriy Stolyarenko on 13.10.2015.
  */
 public class CcaMgmtPersistenceException extends RuntimeException {
 

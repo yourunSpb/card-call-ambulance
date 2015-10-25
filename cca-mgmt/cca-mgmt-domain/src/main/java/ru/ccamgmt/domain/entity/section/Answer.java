@@ -1,25 +1,15 @@
-package ru.ccamgmt.domain.entity;
+package ru.ccamgmt.domain.entity.section;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
+import ru.ccamgmt.domain.entity.ServiceCoreConstants;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
- * Created by Владимир on 13.10.2015.
+ * Created by Yuriy Stolyarenko on 13.10.2015.
  */
 @Entity
 @Table(name = "ANSWER")
@@ -37,12 +27,16 @@ public class Answer implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ANSWER_ID_SEQ")
     private Long id;
 
-    @JoinColumn(name = "QUESTION_ID", referencedColumnName = "QUESTION_ID")
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "QUESTION_ID", referencedColumnName = "QUESTION_ID", nullable = false)
     private Question question;
 
     @Column(name = "ANSWER_VALUE", length = ServiceCoreConstants.ANSWER_VALUE_LENGTH)
     private String answerValue;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "LOOKUP_ID")
+    private Set<LookupSection> lookupSections;
 
     public Long getId() {
         return id;
@@ -66,6 +60,14 @@ public class Answer implements Serializable {
 
     public void setAnswerValue(String answerValue) {
         this.answerValue = answerValue;
+    }
+
+    public Set<LookupSection> getLookupSections() {
+        return lookupSections;
+    }
+
+    public void setLookupSections(Set<LookupSection> lookupSections) {
+        this.lookupSections = lookupSections;
     }
 
     @Override

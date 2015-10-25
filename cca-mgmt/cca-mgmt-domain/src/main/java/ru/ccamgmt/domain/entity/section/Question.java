@@ -1,14 +1,15 @@
-package ru.ccamgmt.domain.entity;
+package ru.ccamgmt.domain.entity.section;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
+import ru.ccamgmt.domain.entity.ServiceCoreConstants;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 /**
- * Created by Владимир on 13.10.2015.
+ * Created by Yuriy Stolyarenko on 13.10.2015.
  */
 @Entity
 @Table(name = "QUESTION")
@@ -22,9 +23,9 @@ public class Question implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "QUESTION_ID_SEQ")
     private Long id;
 
-    @JoinColumn(name = "CHECKLIST_ID", referencedColumnName = "CHECKLIST_ID")
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Checklist checklist;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "SECTION_ID", nullable = false)
+    private Section section;
 
     @Column(name = "QUESTION_ORDER")
     private Long questionOrder;
@@ -32,12 +33,17 @@ public class Question implements Serializable {
     @Column(name = "QUESTION_TEXT", length = ServiceCoreConstants.QUESTION_TEXT_LENGTH)
     private String questionText;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "ANSWER",
-            joinColumns = {@JoinColumn(name="QUESTION_ID", referencedColumnName = "QUESTION_ID")}
-    )
-    private List<Answer> answers;
+    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+    @OrderBy("id ASC")
+    private Set<Answer> answers;
+
+    @Column(name = "ANSWER_TYPE", length = 20, nullable = false)
+    @Enumerated(EnumType.STRING)
+    public AnswerType answerType;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "LOOKUP_ID")
+    private Set<LookupSection> lookupSections;
 
     public Long getId() {
         return id;
@@ -47,12 +53,12 @@ public class Question implements Serializable {
         this.id = id;
     }
 
-    public Checklist getChecklist() {
-        return checklist;
+    public Section getSection() {
+        return section;
     }
 
-    public void setChecklist(Checklist checklist) {
-        this.checklist = checklist;
+    public void setSection(Section section) {
+        this.section = section;
     }
 
     public Long getQuestionOrder() {
@@ -71,6 +77,29 @@ public class Question implements Serializable {
         this.questionText = questionText;
     }
 
+    public AnswerType getAnswerType() {
+        return answerType;
+    }
+
+    public void setAnswerType(AnswerType answerType) {
+        this.answerType = answerType;
+    }
+
+    public Set<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(Set<Answer> answers) {
+        this.answers = answers;
+    }
+
+    public Set<LookupSection> getLookupSections() {
+        return lookupSections;
+    }
+
+    public void setLookupSections(Set<LookupSection> lookupSections) {
+        this.lookupSections = lookupSections;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -86,7 +115,7 @@ public class Question implements Serializable {
 
         return new EqualsBuilder()
                 .append(id, question.id)
-                .append(checklist, question.checklist)
+                .append(section, question.section)
                 .append(questionOrder, question.questionOrder)
                 .append(questionText, question.questionText)
                 .isEquals();
@@ -96,7 +125,7 @@ public class Question implements Serializable {
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
                 .append(id)
-                .append(checklist)
+                .append(section)
                 .append(questionOrder)
                 .append(questionText)
                 .toHashCode();
@@ -106,7 +135,7 @@ public class Question implements Serializable {
     public String toString() {
         return "Question {" +
                 "id=" + id +
-                ", checklist'" + checklist + '\'' +
+                ", section'" + section + '\'' +
                 ", questionOrder='" + questionOrder + '\'' +
                 ", questionText='" + questionText + '\'' +
                 '}';
