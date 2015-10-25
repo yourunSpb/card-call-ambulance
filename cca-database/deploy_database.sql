@@ -86,7 +86,7 @@ create table BRIGADE_PROFILE
 (
    PROFILE_ID           NUMBER               not null,
    REDUCTION            VARCHAR2(7),
-   TRANSCRIPT           VARCHAR2(20)
+   TRANSCRIPT           VARCHAR2(100)
 );
 
 alter table BRIGADE_PROFILE
@@ -141,7 +141,7 @@ create index COMPOSITION_BRIGADE_ID on COMPOSITION (
 create table DEPARTMENT 
 (
    DEPARTMENT_ID        NUMBER               not null,
-   DEPARTMENT_NAME      VARCHAR2(100)
+   DEPARTMENT_NAME      VARCHAR2(150)
 );
 
 alter table DEPARTMENT
