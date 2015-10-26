@@ -1,151 +1,195 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>jQuery UI Tabs - Default functionality</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <link rel="stylesheet" type="text/css"  href="n.css">
-    <script>
+    <meta charset="utf-8">
+    <title>Untitled Page</title>
 
-        $(function() {
-            $( "#tabs" ).tabs();
+    <meta name="generator" content="WYSIWYG Web Builder 10 Trial Version - http://www.wysiwygwebbuilder.com">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link href="cupertino/jquery.ui.all.css" rel="stylesheet">
+    <link href="Untitled5.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>    <script src="jquery-1.11.1.min.js"></script>
+    <script src="jquery.ui.core.min.js"></script>
+    <script src="jquery.ui.widget.min.js"></script>
+    <script src="jquery.ui.mouse.min.js"></script>
+    <script src="jquery.ui.sortable.min.js"></script>
+    <script src="jquery.ui.tabs.min.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+            var jQueryTabs1Opts =
+            {
+                show: false,
+                event: 'click',
+                collapsible: false
+            };
+            $("#jQueryTabs1").tabs(jQueryTabs1Opts);
         });
     </script>
-
 </head>
 <body>
 
-<div id="tabs">
+<div id="jQueryTabs1" style="position:absolute;left:2px;top:7px;width:2130px;height:1407px;z-index:144;">
     <ul>
-        <li><a href="#tabs-1">Приём вызова</a></li>
-        <li><a href="#tabs-2">Proin dolor</a></li>
-        <li><a href="#tabs-3">Aenean lacinia</a></li>
+        <li><a href="#jquerytabs1-page-0"><span>Приём Вызова</span></a></li>
+        <li><a href="#jquerytabs1-page-1"><span>Item 2</span></a></li>
+        <li><a href="#jquerytabs1-page-2"><span>Item 3</span></a></li>
     </ul>
-
-    <div id="tabs-1">
-        <div class="field">
-        <label> № Подстанции</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <p id="contenInput"></p></p>
-
-            </div>
-
-        <label> Принял Вызов</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-
-
-        <label> № Бригады</label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
-
-
-        <div class="strong">
-        <label> № Вызова</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-
-        <label> Время Плступления</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <label> Статус Выезда</label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
-    </div>
-
-
-
-
-
-
-        <label> Город</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <label> Улица</label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
-        <label> Дом</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <label> Корпус</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <label> Квартира</label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
-        <label> Подъезд</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <label> Этаж</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <label> Домафон</label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
-
-        <div class="sidebar">
-
-
-                <label for="speed">Место Вызова</label>
-                <select name="speed" id="speed">
-                    <option>Квартира</option>
-                    <option>Улица</option>
-                    <option selected="selected">Medium</option>
-                    <option>Fast</option>
-                    <option>Faster</option>
+    <div style="height:1367px;overflow:auto;padding:0;" id="jquerytabs1-page-0">
+        <div id="wb_Form1" style="position:absolute;left:10px;top:55px;width:2058px;height:1120px;z-index:71;">
+            <form name="contact" method="post" action="mailto:yourname@address.com?subject=Contact Information" id="Form1">
+                <input type="text" id="Editbox1" style="position:absolute;left:162px;top:17px;width:198px;height:23px;line-height:23px;z-index:0;" name="name" value="">
+                <div id="wb_Text2" style="position:absolute;left:31px;top:17px;width:99px;height:17px;z-index:1;text-align:left;">
+                    <span style="color:#000000;font-family:'Segoe UI Symbol';font-size:13px;">№</span><span style="color:#000000;font-family:Arial;font-size:13px;"> Подстанции</span></div>
+                <input type="text" id="Editbox2" style="position:absolute;left:162px;top:52px;width:198px;height:23px;line-height:23px;z-index:2;" name="address" value="">
+                <input type="text" id="Editbox3" style="position:absolute;left:162px;top:86px;width:198px;height:23px;line-height:23px;z-index:3;" name="city" value="">
+                <select name="country" size="1" id="Combobox1" style="position:absolute;left:162px;top:221px;width:200px;height:25px;z-index:4;">
+                    <option value="1">Квартира </option>
+                    <option value="2">улица</option>
+                    <option value="3">федеральная трасса</option>
+                    <option value="4">общественное место</option>
+                    <option value="5">рабочее место</option>
+                    <option value="6">полиция</option>
+                    <option value="6">дошкольное учереждение </option>
+                    <option value="7">школа</option>
+                    <option value="8">ЛПУ</option>
+                    <option value="9">другое</option>
                 </select>
-            </ul>
-            </label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
+                <div id="wb_Text17" style="position:absolute;left:31px;top:86px;width:99px;height:17px;z-index:5;text-align:left;">
+                    <span style="color:#000000;font-family:'Segoe UI Symbol';font-size:13px;">№</span><span style="color:#000000;font-family:Arial;font-size:13px;"> Вызова</span></div>
+                <div id="wb_Text3" style="position:absolute;left:31px;top:119px;width:99px;height:16px;z-index:6;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Город</span></div>
+                <div id="wb_Text5" style="position:absolute;left:451px;top:52px;width:129px;height:17px;z-index:7;text-align:left;">
+                    <span style="color:#000000;font-family:'Segoe UI Symbol';font-size:13px;">№</span><span style="color:#000000;font-family:Arial;font-size:13px;"> Бригады</span></div>
+                <input type="text" id="Editbox15" style="position:absolute;left:612px;top:52px;width:198px;height:23px;line-height:23px;z-index:8;" name="address" value="">
+                <input type="text" id="Editbox16" style="position:absolute;left:612px;top:86px;width:198px;height:23px;line-height:23px;z-index:9;" name="address" value="">
+                <div id="wb_Text18" style="position:absolute;left:451px;top:86px;width:129px;height:16px;z-index:10;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Время Поступления</span></div>
+                <div id="wb_Text19" style="position:absolute;left:892px;top:86px;width:99px;height:16px;z-index:11;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Статус выезда</span></div>
+                <input type="text" id="Editbox18" style="position:absolute;left:612px;top:119px;width:198px;height:23px;line-height:23px;z-index:12;" name="address" value="">
+                <div id="wb_Text20" style="position:absolute;left:451px;top:119px;width:99px;height:16px;z-index:13;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Улица</span></div>
+                <input type="text" id="Editbox4" style="position:absolute;left:162px;top:119px;width:198px;height:23px;line-height:23px;z-index:14;" name="state" value="">
+                <div id="wb_Text4" style="position:absolute;left:31px;top:155px;width:99px;height:16px;z-index:15;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Дом</span></div>
+                <input type="text" id="Editbox5" style="position:absolute;left:162px;top:155px;width:51px;height:23px;line-height:23px;z-index:16;" name="city" value="">
+                <div id="wb_Text6" style="position:absolute;left:451px;top:155px;width:129px;height:16px;z-index:17;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Корпус</span></div>
+                <input type="text" id="Editbox6" style="position:absolute;left:612px;top:155px;width:43px;height:23px;line-height:23px;z-index:18;" name="address" value="">
+                <div id="wb_Text7" style="position:absolute;left:892px;top:155px;width:99px;height:16px;z-index:19;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Квартира</span></div>
+                <input type="text" id="Editbox7" style="position:absolute;left:1037px;top:155px;width:41px;height:23px;line-height:23px;z-index:20;" name="address" value="">
+                <div id="wb_Text8" style="position:absolute;left:31px;top:188px;width:99px;height:16px;z-index:21;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Подъезд</span></div>
+                <input type="text" id="Editbox8" style="position:absolute;left:162px;top:188px;width:51px;height:23px;line-height:23px;z-index:22;" name="city" value="">
+                <div id="wb_Text9" style="position:absolute;left:451px;top:188px;width:129px;height:16px;z-index:23;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Этаж</span></div>
+                <input type="text" id="Editbox9" style="position:absolute;left:612px;top:188px;width:43px;height:23px;line-height:23px;z-index:24;" name="address" value="">
+                <div id="wb_Text10" style="position:absolute;left:892px;top:188px;width:99px;height:16px;z-index:25;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Домофон</span></div>
+                <input type="text" id="Editbox10" style="position:absolute;left:1037px;top:188px;width:198px;height:23px;line-height:23px;z-index:26;" name="address" value="">
+                <div id="wb_Text11" style="position:absolute;left:31px;top:221px;width:99px;height:16px;z-index:27;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Место Вызова</span></div>
+                <input type="text" id="Editbox12" style="position:absolute;left:162px;top:254px;width:198px;height:23px;line-height:23px;z-index:28;" name="name" value="">
+                <div id="wb_Text12" style="position:absolute;left:451px;top:254px;width:99px;height:16px;z-index:29;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Тип Вызова</span></div>
+                <select name="country" size="1" id="Combobox2" style="position:absolute;left:1037px;top:377px;width:61px;height:25px;z-index:30;">
+                    <option value="1">МУЖ</option>
+                    <option value="2">ЖЕН</option>
+                </select>
+                <div id="wb_Text13" style="position:absolute;left:31px;top:254px;width:99px;height:16px;z-index:31;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Кто Вызвал</span></div>
+                <div id="wb_Text1" style="position:absolute;left:31px;top:53px;width:99px;height:16px;z-index:32;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Принял Вызов</span></div>
+                <div id="wb_Text14" style="position:absolute;left:612px;top:328px;width:99px;height:23px;z-index:33;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:20px;">Пациент</span></div>
+                <div id="wb_Text15" style="position:absolute;left:31px;top:377px;width:99px;height:16px;z-index:34;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">ФИО</span></div>
+                <input type="text" id="Editbox13" style="position:absolute;left:162px;top:377px;width:198px;height:23px;line-height:23px;z-index:35;" name="city" value="">
+                <div id="wb_Text16" style="position:absolute;left:451px;top:377px;width:129px;height:16px;z-index:36;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Возраст</span></div>
+                <input type="text" id="Editbox14" style="position:absolute;left:612px;top:377px;width:198px;height:23px;line-height:23px;z-index:37;" name="address" value="">
+                <div id="wb_Text21" style="position:absolute;left:892px;top:377px;width:99px;height:16px;z-index:38;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Пол</span></div>
+                <select name="country" size="1" id="Combobox3" style="position:absolute;left:612px;top:254px;width:200px;height:25px;z-index:39;">
+                    <option value="3">ДТП</option>
+                    <option value="4">Ложный Вызов</option>
+                    <option value="1">Убийство</option>
+                    <option value="2">СамоУбийство</option>
+                </select>
+                <input type="text" id="Editbox19" style="position:absolute;left:1037px;top:413px;width:198px;height:23px;line-height:23px;z-index:40;" name="address" value="">
+                <div id="wb_Text22" style="position:absolute;left:892px;top:413px;width:109px;height:16px;z-index:41;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Для Иногородних</span></div>
+                <input type="text" id="Editbox20" style="position:absolute;left:612px;top:413px;width:198px;height:23px;line-height:23px;z-index:42;" name="address" value="">
+                <div id="wb_Text23" style="position:absolute;left:451px;top:413px;width:129px;height:16px;z-index:43;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Место Рождения</span></div>
+                <input type="text" id="Editbox21" style="position:absolute;left:162px;top:413px;width:198px;height:23px;line-height:23px;z-index:44;" name="city" value="">
+                <div id="wb_Text24" style="position:absolute;left:31px;top:413px;width:99px;height:16px;z-index:45;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Паспорт</span></div>
+                <div id="wb_Text25" style="position:absolute;left:31px;top:446px;width:99px;height:16px;z-index:46;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">ОМС</span></div>
+                <input type="text" id="Editbox22" style="position:absolute;left:162px;top:446px;width:198px;height:23px;line-height:23px;z-index:47;" name="name" value="">
+                <div id="wb_Text26" style="position:absolute;left:31px;top:479px;width:114px;height:32px;z-index:48;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">СМО Гражданство</span></div>
+                <input type="text" id="Editbox23" style="position:absolute;left:162px;top:479px;width:198px;height:23px;line-height:23px;z-index:49;" name="name" value="">
+                <div id="wb_Text27" style="position:absolute;left:31px;top:511px;width:131px;height:16px;z-index:50;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Адресс Регистрации</span></div>
+                <input type="text" id="Editbox24" style="position:absolute;left:162px;top:511px;width:198px;height:23px;line-height:23px;z-index:51;" name="name" value="">
+                <div id="wb_Text28" style="position:absolute;left:31px;top:545px;width:99px;height:16px;z-index:52;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Район </span></div>
+                <input type="text" id="Editbox25" style="position:absolute;left:162px;top:544px;width:198px;height:23px;line-height:23px;z-index:53;" name="address" value="">
+                <div id="wb_Text29" style="position:absolute;left:451px;top:544px;width:129px;height:16px;z-index:54;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Пункт</span></div>
+                <input type="text" id="Editbox26" style="position:absolute;left:612px;top:544px;width:198px;height:23px;line-height:23px;z-index:55;" name="address" value="">
+                <div id="wb_Text30" style="position:absolute;left:31px;top:579px;width:99px;height:16px;z-index:56;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Улица</span></div>
+                <input type="text" id="Editbox27" style="position:absolute;left:162px;top:579px;width:51px;height:23px;line-height:23px;z-index:57;" name="city" value="">
+                <div id="wb_Text31" style="position:absolute;left:451px;top:579px;width:129px;height:16px;z-index:58;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Дом</span></div>
+                <input type="text" id="Editbox28" style="position:absolute;left:612px;top:579px;width:43px;height:23px;line-height:23px;z-index:59;" name="address" value="">
+                <div id="wb_Text32" style="position:absolute;left:892px;top:579px;width:109px;height:16px;z-index:60;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Корпус</span></div>
+                <input type="text" id="Editbox29" style="position:absolute;left:1037px;top:579px;width:41px;height:23px;line-height:23px;z-index:61;" name="address" value="">
+                <div id="wb_Text33" style="position:absolute;left:1299px;top:579px;width:109px;height:16px;z-index:62;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Квартира</span></div>
+                <input type="text" id="Editbox30" style="position:absolute;left:1408px;top:579px;width:43px;height:23px;line-height:23px;z-index:63;" name="address" value="">
+                <div id="wb_Text34" style="position:absolute;left:612px;top:643px;width:124px;height:23px;z-index:64;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:20px;">Заболевания</span></div>
+                <div id="wb_Text35" style="position:absolute;left:31px;top:694px;width:131px;height:16px;z-index:65;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Повод к вызову</span></div>
+                <textarea name="TextArea1" id="TextArea1" style="position:absolute;left:162px;top:697px;width:198px;height:135px;z-index:66;" rows="7" cols="30"></textarea>
+                <div id="wb_Text36" style="position:absolute;left:451px;top:697px;width:129px;height:32px;z-index:67;text-align:left;">
+                    <span style="color:#000000;font-family:Arial;font-size:13px;">Причина Обращения</span></div>
+                <select name="country" size="1" id="Combobox4" style="position:absolute;left:612px;top:697px;width:200px;height:25px;z-index:68;">
+                    <option value="1">Заболевания</option>
+                    <option value="2">Несчастный Случай</option>
+                    <option value="3">Беременность</option>
+                    <option value="4">Роды</option>
+                    <option value="5">ЧС(угрозы)</option>
+                    <option value="6">Врач.сопровождения</option>
+                    <option value="7">Экстренная перевозка</option>
+                    <option value="8">Плановая Перевозка</option>
+                    <option value="9">гимодеализ</option>
+                    <option value="10">другое </option>
+                </select>
+                <select name="country" size="1" id="Combobox5" style="position:absolute;left:1037px;top:86px;width:200px;height:25px;z-index:69;">
+                    <option value="1">В пути</option>
+                    <option value="2">Навыезде</option>
+                    <option value="3">Сдал</option>
+                </select>
+                <textarea name="TextArea2" id="TextArea2" style="position:absolute;left:611px;top:221px;width:199px;height:23px;z-index:70;" rows="0" cols="30"></textarea>
+            </form>
         </div>
-
-
-        <label> Кто вызвал</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <label> Тип Вызова</label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
-        <label> ФИО</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <label> Возраст</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <label> Пол</label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
-        <label> Паспорт "свидетельство о рождении"</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <label> Место рождения</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <label> Для Иногородних</label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
-        <label> ОМС </label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
-        <label> СМО</label>
-        <label> Гражданство</label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
-        <label> Адрес Постоянной Регистрации</label>
-        <label> Регион</label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
-        <label> Район</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <label> Пункт</label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
-        <label> Улица</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <label> Дом</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <label> Корпус</label>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <label> Квартира</label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
-        <label> Заболевание</label>
-        <label> Повод к вызову</label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
-        <label> Причина обращения</label>
-        <input type="text" width="120" class="mytext" value="Пример"></p>
-        <input type="text" width="120" class="mytext" value="Пример">
-        <input type="text" width="120" class="mytext" value="Пример">
     </div>
-
-    <div id="tabs-2">
-        <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+    <div style="height:1367px;overflow:auto;padding:0;" id="jquerytabs1-page-1">
     </div>
-
-    <div id="tabs-3">
-        <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-        <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+    <div style="height:1367px;overflow:auto;padding:0;" id="jquerytabs1-page-2">
     </div>
-
 </div>
-
-
+<div id="wb_Image1" style="position:absolute;left:272px;top:18px;width:56px;height:33px;z-index:145;">
+    <img src="images/Agn7QhZmNKo.jpg" id="Image1" alt=""></div>
 </body>
 </html>
