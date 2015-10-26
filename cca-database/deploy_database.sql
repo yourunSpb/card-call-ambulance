@@ -71,6 +71,7 @@ alter table ANSWER
 create table BRIGADE 
 (
    BRIGADE_ID           NUMBER               not null,
+   BRIGADE_NUMBER       NUMBER,
    DEPARTMENT_ID        NUMBER,
    PROFILE_ID           NUMBER
 );
@@ -85,7 +86,7 @@ create table BRIGADE_PROFILE
 (
    PROFILE_ID           NUMBER               not null,
    REDUCTION            VARCHAR2(7),
-   TRANSCRIPT           VARCHAR2(20)
+   TRANSCRIPT           VARCHAR2(100)
 );
 
 alter table BRIGADE_PROFILE
@@ -140,7 +141,7 @@ create index COMPOSITION_BRIGADE_ID on COMPOSITION (
 create table DEPARTMENT 
 (
    DEPARTMENT_ID        NUMBER               not null,
-   DEPARTMENT_NAME      VARCHAR2(100)
+   DEPARTMENT_NAME      VARCHAR2(150)
 );
 
 alter table DEPARTMENT
@@ -153,7 +154,6 @@ create table LOOKUP_SECTION
 (
    LOOKUP_ID            NUMBER               not null,
    CARD_CALL_ID         NUMBER               not null,
-   SECTION_ID           NUMBER,
    QUESTION_ID          NUMBER,
    ANSWER_ID            NUMBER,
    ANSWER_VALUE         VARCHAR2(1000)
@@ -243,7 +243,8 @@ create table QUESTION
    QUESTION_ID          NUMBER               not null,
    SECTION_ID           NUMBER               not null,
    QUESTION_ORDER       NUMBER,
-   QUESTION_TEXT        VARCHAR2(255)
+   QUESTION_TEXT        VARCHAR2(255),
+   ANSWER_TYPE          VARCHAR2(20)
 );
 
 alter table QUESTION
@@ -306,9 +307,6 @@ alter table LOOKUP_SECTION
    add constraint FK_LOOKUP_CARD_CALL foreign key (CARD_CALL_ID)
       references CARD_CALL (CARD_CALL_ID);
 
-alter table LOOKUP_SECTION
-   add constraint FK_LOOKUP_SECTION foreign key (SECTION_ID)
-      references SECTION (SECTION_ID);
 
 alter table LOOKUP_SECTION
    add constraint FK_LOOKUP_QUESTION foreign key (QUESTION_ID)
