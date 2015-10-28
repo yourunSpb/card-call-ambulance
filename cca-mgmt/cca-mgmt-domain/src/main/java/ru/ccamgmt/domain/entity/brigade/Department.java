@@ -34,8 +34,7 @@ public class Department implements Serializable {
     @Column(name = "DEPARTMENT_NAME")
     private String departmentName;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "BRIGADE_ID", referencedColumnName = "BRIGADE_ID")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "department", cascade = CascadeType.ALL)
     private Brigade brigade;
 
     public Long getId() {

@@ -1,0 +1,107 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0-SNAPSHOT",
+    "title": "Card Call Manager",
+    "description": "Card Call Manager Contracts"
+  },
+  "schemes": [
+    "http"
+  ],
+  "host": "localhost",
+  "basePath": "/ccaMgmt",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/medicList": {
+      "get": {
+        "summary": "Get all the medics at the substation",
+        "description": "This method returns list of Medics",
+        "responses": {
+          "200": {
+            "description": "Response with actual data",
+            "schema": {
+              "$ref": "#/definitions/medicsResponse"
+            }
+          },
+          "400": {
+            "schema":{
+              "$ref": "#/definitions/errorResponse"
+            },
+            "description": "Bad request"
+          },
+          "404": {
+            "schema":{
+              "$ref": "#/definitions/errorResponse"
+            },
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "errorResponse": {
+      "type": "object",
+      "required":
+      [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 600,
+          "description": "Error code."
+        },
+        "message": {
+          "type": "string",
+          "description": "Error message (in user displayable format)"
+        },
+        "details": {
+          "type": "string",
+          "description": "Technical details of the error (i.e. stack trace, etc.) that would assist in troubleshooting the error, but are not intended for end user"
+        }
+      }
+    },
+    "medicsResponse": {
+      "type": "object",
+      "properties": {
+        "medics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MedicDetails"
+          },
+          "description": "Medic details"
+        }
+      }
+    },
+    "MedicDetails": {
+      "type": "object",
+      "properties": {
+        "medicId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "medic id in system"
+        },
+        "firstName": {
+          "type": "string",
+          "description": "first name"
+        },
+        "middleName": {
+          "type": "string",
+          "description": "middle name"
+        },
+        "position": {
+          "type": "string",
+          "description": "medic position"
+        }
+      }
+    }
+  }
+}

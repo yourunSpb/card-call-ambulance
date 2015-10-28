@@ -3,20 +3,9 @@ package ru.ccamgmt.domain.entity.medic;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
+import ru.ccamgmt.domain.entity.brigade.Brigade;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -26,6 +15,10 @@ import java.util.Set;
 @Entity
 @Table(name = "MEDIC")
 @SequenceGenerator(name = "MEDIC_ID_SEQ", sequenceName = "SEQ_MEDIC_ID")
+@NamedQueries({
+        @NamedQuery(name = "Medic.getAllMedics",
+                query = "select a from Medic a ORDER BY a.id ASC")
+})
 public class Medic implements Serializable {
 
     private static final long serialVersionUID = 6469600697898623528L;
@@ -49,6 +42,9 @@ public class Medic implements Serializable {
             joinColumns={@JoinColumn(name="MEDIC_ID", referencedColumnName="MEDIC_ID")},
             inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ROLE_ID")})
     private Set<MedicRole> medicRoles;
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "medics", cascade = CascadeType.ALL)
+    private Set<Brigade> brigades;
 
     public Long getId() {
         return id;
@@ -80,6 +76,14 @@ public class Medic implements Serializable {
 
     public void setMedicRoles(Set<MedicRole> medicRoles) {
         this.medicRoles = medicRoles;
+    }
+
+    public Set<Brigade> getBrigades() {
+        return brigades;
+    }
+
+    public void setBrigades(Set<Brigade> brigades) {
+        this.brigades = brigades;
     }
 
     @Override

@@ -53,7 +53,7 @@ public class CardCall implements Serializable {
     public StatusType status;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "UPDATED_BY", referencedColumnName = "UPDATED_BY")
+    @JoinColumn(name = "UPDATED_BY", referencedColumnName = "MEDIC_ID")
     private Medic updateBy;
 
     @Column(name = "UPDATE_DATE_TIME")

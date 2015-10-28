@@ -37,8 +37,7 @@ public class BrigadeProfile implements Serializable {
     @Column(name = "TRANSCRIPT")
     private String transcript;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "BRIGADE_ID", referencedColumnName = "BRIGADE_ID")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "brigadeProfile", cascade = CascadeType.ALL)
     private Brigade brigade;
 
     public Long getId() {

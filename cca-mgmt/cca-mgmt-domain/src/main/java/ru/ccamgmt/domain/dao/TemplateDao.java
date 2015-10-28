@@ -15,13 +15,10 @@ import java.util.List;
  * Created by Yuriy Stolyarenko on 25.10.2015.
  */
 public class TemplateDAO<MODEL> implements ITemplateDAO<MODEL> {
-//
-//public abstract class BaseDAO<MODEL extends Identifiable> implements IBaseDAO<MODEL> {
-
 
     private static final String COUNT_QUERY_TMPL = "SELECT COUNT(ENTITY) FROM %s ENTITY";
 
-    private static final String FIND_ALL_QUERY_TMPL = "SELECT ENTITY FROM %s ENTITY ORDER BY ENTITY.id ASC";
+    private static final String FIND_ALL_QUERY_TMPL = "SELECT ENTITY FROM %s ENTITY ORDER BY %s.id ASC";
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -59,7 +56,7 @@ public class TemplateDAO<MODEL> implements ITemplateDAO<MODEL> {
             throw new IllegalStateException("Can't determine model entity type!");
         }
         this.countQuery = String.format(COUNT_QUERY_TMPL, this.persistentClass.getSimpleName());
-        this.findAllQuery = String.format(FIND_ALL_QUERY_TMPL, this.persistentClass.getSimpleName());
+        this.findAllQuery = String.format(FIND_ALL_QUERY_TMPL, this.persistentClass.getSimpleName(), this.persistentClass.getSimpleName());
     }
 
     @Override

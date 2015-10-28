@@ -18,10 +18,17 @@
         <dependency>
             <groupId>ru.card.call.ambulance</groupId>
             <artifactId>cca-mgmt-contracts</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>ru.card.call.ambulance</groupId>
             <artifactId>cca-mgmt-service</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>ru.card.call.ambulance</groupId>
+            <artifactId>cca-mgmt-domain</artifactId>
             <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>

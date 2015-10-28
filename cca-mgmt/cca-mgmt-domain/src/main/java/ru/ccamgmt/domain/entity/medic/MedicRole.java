@@ -3,15 +3,7 @@ package ru.ccamgmt.domain.entity.medic;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -19,7 +11,7 @@ import java.util.Set;
  * Created by Yuriy Stolyarenko on 20.10.2015.
  */
 @Entity
-@Table(name = "MEDIC_ROLE")
+@Table(name = "USER_ROLE")
 @SequenceGenerator(name = "ROLE_ID_SEQ", sequenceName = "SEQ_ROLE_ID")
 public class MedicRole implements Serializable {
 
@@ -33,7 +25,7 @@ public class MedicRole implements Serializable {
     @Column(name = "ROLE_VALUE")
     private String roleValue;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "items")
+    @ManyToMany(mappedBy = "medicRoles", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Medic> medics;
 
     public String getRoleValue() {

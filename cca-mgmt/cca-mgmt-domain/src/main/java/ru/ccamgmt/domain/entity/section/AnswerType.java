@@ -11,6 +11,11 @@ public enum AnswerType {
     CHECK_BOX("CHECK_BOX"),
 
     /**
+     * Check box answer type
+     */
+    NEW_CHECK_BOX("NEW_CHECK_BOX"),
+
+    /**
      * Drop down answer type
      */
     DROP_DOWN("DROP_DOWN"),

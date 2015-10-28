@@ -13,141 +13,94 @@
     <name>CCA Management Contracts module</name>
     <packaging>jar</packaging>
 
-    <!--<properties>-->
-        <!--&lt;!&ndash; contracts-related parameters &ndash;&gt;-->
-        <!--<contract.path>${basedir}/src/main/resources/contracts</contract.path>-->
-        <!--<contract.filename>cca.json</contract.filename>-->
-        <!--<contract.version>1.0.0-SNAPSHOT</contract.version>-->
+    <properties>
+        <!-- contracts-related parameters -->
+        <contract.path>${basedir}/src/main/resources/contracts</contract.path>
+        <contract.filename>cca.json</contract.filename>
+        <contract.version>1.0.0-SNAPSHOT</contract.version>
+    </properties>
 
-    <!--</properties>-->
+    <dependencies>
+        <!-- Java EE 6 API -->
+        <dependency>
+            <groupId>org.apache.openejb</groupId>
+            <artifactId>javaee-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-multipart</artifactId>
+            <version>${jersey-media-multipart.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sun.jersey</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>${jackson-jaxrs-json-provider.version}</version>
+        </dependency>
+        <!-- Swagger-related dependencies -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sun.jersey</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun.jersey.contribs</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
 
-    <!--<dependencies>-->
-        <!--&lt;!&ndash; Java EE 6 API &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.openejb</groupId>-->
-            <!--<artifactId>javaee-api</artifactId>-->
-            <!--<scope>provided</scope>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.glassfish.jersey.media</groupId>-->
-            <!--<artifactId>jersey-media-multipart</artifactId>-->
-            <!--<version>${jersey-media-multipart.version}</version>-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>com.sun.jersey</groupId>-->
-                    <!--<artifactId>*</artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>com.fasterxml.jackson.jaxrs</groupId>-->
-            <!--<artifactId>jackson-jaxrs-json-provider</artifactId>-->
-            <!--<version>${jackson-jaxrs-json-provider.version}</version>-->
-        <!--</dependency>-->
-        <!--&lt;!&ndash; Swagger-related dependencies &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>io.swagger</groupId>-->
-            <!--<artifactId>swagger-annotations</artifactId>-->
-            <!--<version>${swagger.version}</version>-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>com.sun.jersey</groupId>-->
-                    <!--<artifactId>*</artifactId>-->
-                <!--</exclusion>-->
-                <!--<exclusion>-->
-                    <!--<groupId>com.sun.jersey.contribs</groupId>-->
-                    <!--<artifactId>*</artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
-        <!--</dependency>-->
-    <!--</dependencies>-->
+    <build>
+        <plugins>
+            <!-- specify target and source version for maven compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
 
-    <!--<build>-->
-        <!--<plugins>-->
-            <!--&lt;!&ndash; specify target and source version for maven compiler &ndash;&gt;-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-compiler-plugin</artifactId>-->
-                <!--<configuration>-->
-                    <!--<source>${java.version}</source>-->
-                    <!--<target>${java.version}</target>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-
-            <!--&lt;!&ndash; step 1 : clean dir with contracts &ndash;&gt;-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-clean-plugin</artifactId>-->
-                <!--<version>2.6.1</version>-->
-                <!--<configuration>-->
-                    <!--<filesets>-->
-                        <!--<fileset>-->
-                            <!--<directory>${contract.path}</directory>-->
-                            <!--<includes>-->
-                                <!--<include>**/*.json</include>-->
-                            <!--</includes>-->
-                            <!--<followSymlinks>false</followSymlinks>-->
-                        <!--</fileset>-->
-                    <!--</filesets>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-
-            <!--&lt;!&ndash; step 2 : download and unpack new contracts &ndash;&gt;-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-dependency-plugin</artifactId>-->
-                <!--<version>2.10</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>unpack-contracts</id>-->
-                        <!--<phase>generate-sources</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>unpack</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-                <!--<configuration>-->
-                    <!--<artifactItems>-->
-                        <!--<artifactItem>-->
-                            <!--<groupId>ru.card.call.ambulance</groupId>-->
-                            <!--<artifactId>cca-service-contracts</artifactId>-->
-                            <!--<version>${contract.version}</version>-->
-                            <!--<overWrite>true</overWrite>-->
-                            <!--<outputDirectory>${contract.path}</outputDirectory>-->
-                        <!--</artifactItem>-->
-                    <!--</artifactItems>-->
-                    <!--<includes>**/*.json</includes>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-
-            <!--&lt;!&ndash; step 3 : generate code from contract using Swagger-codegen plugin&ndash;&gt;-->
-            <!--<plugin>-->
-                <!--<groupId>org.zalando.maven.plugins</groupId>-->
-                <!--<artifactId>swagger-codegen-maven-plugin</artifactId>-->
-                <!--<version>${swagger-codegen-maven-plugin.version}</version>-->
-                <!--<configuration>-->
-                    <!--<language>jaxrsinterfaces</language>-->
-                    <!--<apiFile>${contract.path}/${contract.filename}</apiFile>-->
-                    <!--<apiPackage>ru.ccamgmt.stubs</apiPackage>-->
-                    <!--<modelPackage>ru.ccamgmt.contracts</modelPackage>-->
-                <!--</configuration>-->
-                <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<groupId>org.zalando.stups</groupId>-->
-                        <!--<artifactId>swagger-codegen-template-jaxrs-interfaces</artifactId>-->
-                        <!--<version>${swagger-codegen-maven-plugin.version}</version>-->
-                    <!--</dependency>-->
-                <!--</dependencies>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>generate-sources</id>-->
-                        <!--<goals>-->
-                            <!--<goal>codegen</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
-        <!--</plugins>-->
-    <!--</build>-->
+            <!-- generate code from contract using Swagger-codegen plugin-->
+            <plugin>
+                <groupId>org.zalando.maven.plugins</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>${swagger-codegen-maven-plugin.version}</version>
+                <configuration>
+                    <language>jaxrsinterfaces</language>
+                    <apiFile>${contract.path}/${contract.filename}</apiFile>
+                    <apiPackage>ru.ccamgmt.stubs</apiPackage>
+                    <modelPackage>ru.ccamgmt.contracts</modelPackage>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.zalando.stups</groupId>
+                        <artifactId>swagger-codegen-template-jaxrs-interfaces</artifactId>
+                        <version>${swagger-codegen-maven-plugin.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <goals>
+                            <goal>codegen</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

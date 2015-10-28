@@ -2,7 +2,7 @@ package ru.ccamgmt.domain.entity.brigade;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
-import ru.ccamgmt.domain.entity.medic.MedicUser;
+import ru.ccamgmt.domain.entity.medic.Medic;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -52,7 +52,7 @@ public class Brigade implements Serializable {
             name="COMPOSITION",
             joinColumns={@JoinColumn(name="BRIGADE_ID", referencedColumnName="BRIGADE_ID")},
             inverseJoinColumns={@JoinColumn(name="MEDIC_ID", referencedColumnName="MEDIC_ID")})
-    private Set<MedicUser> medicUsers;
+    private Set<Medic> medics;
 
     public Long getId() {
         return id;
@@ -86,12 +86,12 @@ public class Brigade implements Serializable {
         this.brigadeProfile = brigadeProfile;
     }
 
-    public Set<MedicUser> getMedicUsers() {
-        return medicUsers;
+    public Set<Medic> getMedics() {
+        return medics;
     }
 
-    public void setMedicUsers(Set<MedicUser> medicUsers) {
-        this.medicUsers = medicUsers;
+    public void setMedics(Set<Medic> medics) {
+        this.medics = medics;
     }
 
 
@@ -112,7 +112,7 @@ public class Brigade implements Serializable {
                 .append(brigadeNumber, o1.brigadeNumber)
                 .append(department, o1.department)
                 .append(brigadeProfile, o1.brigadeProfile)
-                .append(medicUsers, o1.medicUsers)
+                .append(medics, o1.medics)
                 .isEquals();
     }
 
@@ -123,7 +123,7 @@ public class Brigade implements Serializable {
                 .append(brigadeNumber)
                 .append(department)
                 .append(brigadeProfile)
-                .append(medicUsers)
+                .append(medics)
                 .toHashCode();
     }
 
@@ -134,7 +134,7 @@ public class Brigade implements Serializable {
                 ", brigadeNumber'" + brigadeNumber + '\'' +
                 ", department'" + department + '\'' +
                 ", brigadeProfile'" + brigadeProfile + '\'' +
-                ", medicUsers'" + medicUsers + '\'' +
+                ", medics'" + medics + '\'' +
                 '}';
     }
 }

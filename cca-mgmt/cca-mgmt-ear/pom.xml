@@ -20,12 +20,12 @@
             <version>${project.version}</version>
             <type>ejb</type>
         </dependency>
-        <dependency>
-            <groupId>ru.card.call.ambulance</groupId>
-            <artifactId>cca-mgmt-service</artifactId>
-            <version>${project.version}</version>
-            <type>ejb</type>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>ru.card.call.ambulance</groupId>-->
+            <!--<artifactId>cca-mgmt-service</artifactId>-->
+            <!--<version>${project.version}</version>-->
+            <!--<type>ejb</type>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>ru.card.call.ambulance</groupId>
             <artifactId>cca-mgmt-service-war</artifactId>
@@ -58,14 +58,14 @@
                             <groupId>ru.card.call.ambulance</groupId>
                             <artifactId>cca-mgmt-domain</artifactId>
                         </ejbModule>
-                        <ejbModule>
-                            <groupId>ru.card.call.ambulance</groupId>
-                            <artifactId>cca-mgmt-service</artifactId>
-                        </ejbModule>
+                        <!--<ejbModule>-->
+                            <!--<groupId>ru.card.call.ambulance</groupId>-->
+                            <!--<artifactId>cca-mgmt-service</artifactId>-->
+                        <!--</ejbModule>-->
                         <webModule>
                             <groupId>ru.card.call.ambulance</groupId>
                             <artifactId>cca-mgmt-service-war</artifactId>
-                            <contextRoot>/cca/cards</contextRoot>
+                            <contextRoot>/ccaMgmt</contextRoot>
                         </webModule>
                     </modules>
                 </configuration>

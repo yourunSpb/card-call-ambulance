@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Yuriy Stolyarenko on 13.10.2015.
  */
 @Stateless
-public class SectionDao {
+public class SectionDAO {
 
     @PersistenceContext
     private EntityManager entityManager;

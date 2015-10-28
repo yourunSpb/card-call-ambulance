@@ -33,8 +33,7 @@ public class MedicUser implements Serializable {
     @Column(name = "E_MAIL_ADDRESS")
     private String eMailAddress;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "MEDIC_ID", referencedColumnName = "MEDIC_ID")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "medicUser", cascade = CascadeType.ALL)
     private Medic medic;
 
     public Long getId() {

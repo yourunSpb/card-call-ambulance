@@ -24,8 +24,7 @@ public class MedicPosition implements Serializable {
     @Column(name = "POSITION_VALUE")
     private String positionValue;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "MEDIC_ID", referencedColumnName = "MEDIC_ID")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "medicPosition", cascade = CascadeType.ALL)
     private Medic medic;
 
     public String getPositionValue() {
