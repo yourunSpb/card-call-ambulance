@@ -6,8 +6,8 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import ru.ccamgmt.contracts.MedicsResponse;
 import ru.ccamgmt.service.handler.CcaMgmtHandler;
-import ru.ccamgmt.stubs.MedicListApi;
 import ru.ccamgmt.stubs.NotFoundException;
+import ru.ccamgmt.stubs.UserApi;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -20,15 +20,16 @@ import javax.ws.rs.core.Response;
 /**
  * Created by Yuriy Stolyarenko on 28.10.2015.
  */
-@Path("/medicList")
-@Api(value = "/medicList", description = "the medicList API")
+@Path("/user")
+@Api(value = "/user", description = "the user API")
 @Stateless
-public class CcaMgmtApiImpl implements MedicListApi {
+public class userApiImpl implements UserApi {
 
     @EJB
     CcaMgmtHandler ccaMgmtHandler;
 
     @GET
+    @Path("/medicList")
     @ApiOperation(value = "Get all the medics at the substation", notes = "This method returns list of Medics", response = MedicsResponse.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Response with actual data"),
@@ -36,9 +37,10 @@ public class CcaMgmtApiImpl implements MedicListApi {
             @ApiResponse(code = 400, message = "Bad request"),
 
             @ApiResponse(code = 404, message = "Not Found") })
+
     @Override
     @Produces(MediaType.APPLICATION_JSON)
-    public Response medicListGet() throws NotFoundException {
+    public Response userMedicListGet() throws NotFoundException {
         return ccaMgmtHandler.medicHandle();
     }
 }

@@ -213,12 +213,12 @@ create index USER_MEDIC_ID on MEDIC_ROLE (
    MEDIC_ID ASC
 );
 
-/*==============================================================*/
-/* Index: USER_ROLE_ID                                          */
-/*==============================================================*/
-create index USER_ROLE_ID on MEDIC_ROLE (
-   ROLE_ID ASC
-);
+--/*==============================================================*/
+--/* Index: USER_ROLE_ID                                          */
+--/*==============================================================*/
+--create index USER_ROLE_ID on MEDIC_ROLE (
+--   ROLE_ID ASC
+--);
 
 /*==============================================================*/
 /* Table: MEDIC_USER                                            */
@@ -325,12 +325,13 @@ alter table MEDIC
       references MEDIC_USER (USER_ID);
 
 alter table MEDIC_ROLE
+   add constraint FK_MEDIC_ROLE foreign key (MEDIC_ID)
+      references MEDIC (MEDIC_ID);
+
+alter table MEDIC_ROLE
    add constraint FK_ROLE_MEDIC foreign key (ROLE_ID)
       references USER_ROLE (ROLE_ID);
 
-alter table MEDIC_ROLE
-   add constraint FK_MEDIC_ROLE foreign key (MEDIC_ID)
-      references MEDIC (MEDIC_ID);
 
 alter table QUESTION
    add constraint FK_QUESTION_SECTION foreign key (SECTION_ID)
