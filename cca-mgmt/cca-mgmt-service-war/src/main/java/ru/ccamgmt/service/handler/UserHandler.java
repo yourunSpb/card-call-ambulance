@@ -15,13 +15,13 @@ import java.util.List;
  * Created by Yuriy Stolyarenko on 28.10.2015.
  */
 @Stateless
-public class CcaMgmtHandler {
+public class UserHandler {
 
     @EJB
     MedicDAO medicDAO;
 
 
-    public Response medicHandle() {
+    public Response medicListHandle() {
         MedicsResponse medicResponse = new MedicsResponse();
         List<MedicDetails> medicDetailsList = new ArrayList<>();
         List<Medic> medicList = medicDAO.findAll();

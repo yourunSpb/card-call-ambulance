@@ -98,7 +98,7 @@
     "FormSectionsResponse": {
       "type": "object",
       "properties": {
-        "medics": {
+        "sections": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/SectionDetails"

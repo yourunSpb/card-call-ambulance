@@ -18,7 +18,7 @@ public class TemplateDAO<MODEL> implements ITemplateDAO<MODEL> {
 
     private static final String COUNT_QUERY_TMPL = "SELECT COUNT(ENTITY) FROM %s ENTITY";
 
-    private static final String FIND_ALL_QUERY_TMPL = "SELECT ENTITY FROM %s ENTITY ORDER BY %s.id ASC";
+    private static final String FIND_ALL_QUERY_TMPL = "SELECT ENTITY FROM %s ENTITY ORDER BY ENTITY.id ASC";
 
     @PersistenceContext
     private EntityManager entityManager;

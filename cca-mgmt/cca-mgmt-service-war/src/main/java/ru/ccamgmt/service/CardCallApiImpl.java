@@ -4,10 +4,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import ru.ccamgmt.contracts.MedicsResponse;
+import ru.ccamgmt.contracts.FormSectionsResponse;
+import ru.ccamgmt.service.handler.CardCallHandler;
 import ru.ccamgmt.service.handler.UserHandler;
+import ru.ccamgmt.stubs.CardCallApi;
 import ru.ccamgmt.stubs.NotFoundException;
-import ru.ccamgmt.stubs.UserApi;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -18,29 +19,28 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * Created by Yuriy Stolyarenko on 28.10.2015.
+ * Created by Yuriy Stolyarenko on 01.11.2015.
  */
-@Path("/user")
-@Api(value = "/user", description = "the user API")
+@Path("/cardCall")
+@Api(value = "/cardCall", description = "the cardCall API")
 @Stateless
-public class UserApiImpl implements UserApi {
+public class CardCallApiImpl implements CardCallApi {
 
     @EJB
-    UserHandler userHandler;
+    CardCallHandler cardCallHandler;
 
     @GET
-    @Path("/medicList")
-    @ApiOperation(value = "Get all the medics at the substation", notes = "This method returns list of Medics", response = MedicsResponse.class)
+    @Path("/formSections")
+    @ApiOperation(value = "Get sections and questions", notes = "This method returns a list of questions and answers", response = FormSectionsResponse.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Response with actual data"),
 
             @ApiResponse(code = 400, message = "Bad request"),
 
             @ApiResponse(code = 404, message = "Not Found") })
-
     @Override
     @Produces(MediaType.APPLICATION_JSON)
-    public Response userMedicListGet() throws NotFoundException {
-        return userHandler.medicListHandle();
+    public Response cardCallFormSectionsGet() throws NotFoundException {
+        return cardCallHandler.sectionListHandler();
     }
 }
