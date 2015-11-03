@@ -29,13 +29,48 @@
             }
           },
           "400": {
-            "schema":{
+            "schema": {
               "$ref": "#/definitions/ErrorResponse"
             },
             "description": "Bad request"
           },
           "404": {
-            "schema":{
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/cardCall/addOrEdit": {
+      "post": {
+        "summary": "add or update card call",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddCardCallRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response with actual data",
+            "schema": {
+              "$ref": "#/definitions/MedicsResponse"
+            }
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Bad request"
+          },
+          "404": {
+            "schema": {
               "$ref": "#/definitions/ErrorResponse"
             },
             "description": "Not Found"
@@ -55,13 +90,13 @@
             }
           },
           "400": {
-            "schema":{
+            "schema": {
               "$ref": "#/definitions/ErrorResponse"
             },
             "description": "Bad request"
           },
           "404": {
-            "schema":{
+            "schema": {
               "$ref": "#/definitions/ErrorResponse"
             },
             "description": "Not Found"
@@ -73,8 +108,7 @@
   "definitions": {
     "ErrorResponse": {
       "type": "object",
-      "required":
-      [
+      "required": [
         "code",
         "message"
       ],
@@ -92,6 +126,89 @@
         "details": {
           "type": "string",
           "description": "Technical details of the error (i.e. stack trace, etc.) that would assist in troubleshooting the error, but are not intended for end user"
+        }
+      }
+    },
+    "AddCardCallRequest": {
+      "type": "object",
+      "properties": {
+        "cardCallId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "If this field is present then update the map with the current call ID"
+        },
+        "brigade": {
+          "$ref": "#/definitions/BrigadeDetails",
+          "description": "brigade details"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LookupSection"
+          },
+          "description": "lookup section"
+        },
+        "updatedBy": {
+          "type": "integer",
+          "format": "int64",
+          "description": "medic id in system"
+        },
+        "updateDate": {
+          "type": "string",
+          "format": "date",
+          "description": "update date"
+        }
+      }
+    },
+    "LookupSection": {
+      "type": "object",
+      "properties": {
+        "cardCallId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "card call id in system"
+        },
+        "questionId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "question id in system"
+        },
+        "answerId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "answer id in system"
+        },
+        "answerValue": {
+          "type": "string",
+          "description": "answer value"
+        }
+      }
+    },
+    "BrigadeDetails": {
+      "type": "object",
+      "properties": {
+        "brigadeNumber": {
+          "type": "integer",
+          "format": "int64",
+          "description": "brigade number"
+        },
+        "departmentId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "department id in system"
+        },
+        "profileId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "profile id in system"
+        },
+        "medicList": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": "List ID of medical"
         }
       }
     },
