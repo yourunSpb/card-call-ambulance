@@ -34,15 +34,15 @@ public class LookupSection implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "LOOKUP_ID_SEQ")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "QUESTION_ID", nullable = false)
     private Question question;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ANSWER_ID")
     private Answer answer;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CARD_CALL_ID", nullable = false)
     private CardCall cardCall;
 

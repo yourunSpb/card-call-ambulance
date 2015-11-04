@@ -1,10 +1,8 @@
 package ru.ccamgmt.domain.dao;
 
 import ru.ccamgmt.domain.entity.medic.Medic;
-import ru.ccamgmt.domain.entity.section.Question;
 
 import javax.ejb.Stateless;
-import javax.persistence.Query;
 import java.util.List;
 
 /**

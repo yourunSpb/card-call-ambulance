@@ -34,9 +34,15 @@ public class Answer implements Serializable {
     @Column(name = "ANSWER_VALUE", length = ServiceCoreConstants.ANSWER_VALUE_LENGTH)
     private String answerValue;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "LOOKUP_ID")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "answer")
     private Set<LookupSection> lookupSections;
+
+    public Answer() {
+    }
+
+    public Answer(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
         return id;

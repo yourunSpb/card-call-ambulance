@@ -17,7 +17,7 @@
     "application/json"
   ],
   "paths": {
-    "/medicList": {
+    "/user/medicList": {
       "get": {
         "summary": "Get all the medics at the substation",
         "description": "This method returns list of Medics",
@@ -25,18 +25,79 @@
           "200": {
             "description": "Response with actual data",
             "schema": {
-              "$ref": "#/definitions/medicsResponse"
+              "$ref": "#/definitions/MedicsResponse"
             }
           },
           "400": {
-            "schema":{
-              "$ref": "#/definitions/errorResponse"
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
             },
             "description": "Bad request"
           },
           "404": {
-            "schema":{
-              "$ref": "#/definitions/errorResponse"
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/cardCall/addOrEdit": {
+      "post": {
+        "summary": "add or update card call",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddCardCallRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response with actual data",
+            "schema": {
+              "$ref": "#/definitions/MedicsResponse"
+            }
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Bad request"
+          },
+          "404": {
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/cardCall/formSections": {
+      "get": {
+        "summary": "Get sections and questions",
+        "description": "This method returns a list of questions and answers",
+        "responses": {
+          "200": {
+            "description": "Response with actual data",
+            "schema": {
+              "$ref": "#/definitions/FormSectionsResponse"
+            }
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Bad request"
+          },
+          "404": {
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
             },
             "description": "Not Found"
           }
@@ -45,10 +106,9 @@
     }
   },
   "definitions": {
-    "errorResponse": {
+    "ErrorResponse": {
       "type": "object",
-      "required":
-      [
+      "required": [
         "code",
         "message"
       ],
@@ -69,7 +129,172 @@
         }
       }
     },
-    "medicsResponse": {
+    "AddCardCallRequest": {
+      "type": "object",
+      "properties": {
+        "cardCallId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "If this field is present then update the card with the current call ID"
+        },
+        "brigade": {
+          "$ref": "#/definitions/BrigadeDetails",
+          "description": "brigade details"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LookupSectionDetails"
+          },
+          "description": "lookup section"
+        },
+        "updatedBy": {
+          "type": "integer",
+          "format": "int64",
+          "description": "medic id in system"
+        },
+        "updateDate": {
+          "type": "string",
+          "format": "date",
+          "description": "update date"
+        }
+      }
+    },
+    "LookupSectionDetails": {
+      "type": "object",
+      "properties": {
+        "lookupSectionId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "If this field is present then update the lookup section with the current ID"
+        },
+        "cardCallId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "card call id in system"
+        },
+        "questionId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "question id in system"
+        },
+        "answerId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "answer id in system"
+        },
+        "answerValue": {
+          "type": "string",
+          "description": "answer value"
+        }
+      }
+    },
+    "BrigadeDetails": {
+      "type": "object",
+      "properties": {
+        "brigadeId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "If this field is present then update the bridate with the current brigade ID"
+        },
+        "brigadeNumber": {
+          "type": "integer",
+          "format": "int64",
+          "description": "brigade number"
+        },
+        "departmentId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "department id in system"
+        },
+        "profileId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "profile id in system"
+        },
+        "medicList": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": "List ID of medical"
+        }
+      }
+    },
+    "FormSectionsResponse": {
+      "type": "object",
+      "properties": {
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SectionDetails"
+          },
+          "description": "Section details"
+        }
+      }
+    },
+    "SectionDetails": {
+      "type": "object",
+      "properties": {
+        "sectionId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "section id in system"
+        },
+        "sectionName": {
+          "type": "string",
+          "description": "section name in system"
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QuestionDetails"
+          },
+          "description": "list of questions"
+        }
+      }
+    },
+    "QuestionDetails": {
+      "type": "object",
+      "properties": {
+        "questionId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "question id in system"
+        },
+        "answerType": {
+          "type": "string",
+          "description": "answer type ('TEXT_BOX', 'NEW_CHECK_BOX')"
+        },
+        "questuinText": {
+          "type": "string",
+          "description": "question text"
+        },
+        "answers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AnswerDetails"
+          },
+          "description": "Answer details"
+        }
+      }
+    },
+    "AnswerDetails": {
+      "type": "object",
+      "properties": {
+        "answerId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "answer id in system"
+        },
+        "answerValue": {
+          "type": "string",
+          "description": "answer value"
+        }
+      }
+    },
+    "MedicsResponse": {
       "type": "object",
       "properties": {
         "medics": {

@@ -3,6 +3,7 @@ package ru.ccamgmt.domain.entity.medic;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
+import ru.ccamgmt.domain.entity.CardCall;
 import ru.ccamgmt.domain.entity.brigade.Brigade;
 
 import javax.persistence.*;
@@ -43,8 +44,18 @@ public class Medic implements Serializable {
             inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ROLE_ID")})
     private Set<MedicRole> medicRoles;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "medics", cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "medics")
     private Set<Brigade> brigades;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "updateBy")
+    private Set<CardCall> cardCalls;
+
+    public Medic() {
+    }
+
+    public Medic(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
         return id;
@@ -86,6 +97,14 @@ public class Medic implements Serializable {
         this.brigades = brigades;
     }
 
+    public Set<CardCall> getCardCalls() {
+        return cardCalls;
+    }
+
+    public void setCardCalls(Set<CardCall> cardCalls) {
+        this.cardCalls = cardCalls;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -118,7 +137,7 @@ public class Medic implements Serializable {
 
     @Override
     public String toString() {
-        return "MedicPosition {" +
+        return "Medic {" +
                 "id=" + id +
                 ", medicPosition'" + medicPosition + '\'' +
                 ", medicUser'" + medicUser + '\'' +
