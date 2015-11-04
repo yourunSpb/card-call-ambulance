@@ -43,6 +43,32 @@
         }
       }
     },
+    "/cardCall/departmentList": {
+      "get": {
+        "summary": "Get all the departments at the substation",
+        "description": "This method returns list of Departments",
+        "responses": {
+          "200": {
+            "description": "Response with actual data",
+            "schema": {
+              "$ref": "#/definitions/DepartmentsResponse"
+            }
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Bad request"
+          },
+          "404": {
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/cardCall/addOrEdit": {
       "post": {
         "summary": "add or update card call",
@@ -303,6 +329,32 @@
             "$ref": "#/definitions/MedicDetails"
           },
           "description": "Medic details"
+        }
+      }
+    },
+    "DepartmentsResponse": {
+      "type": "object",
+      "properties": {
+        "departments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DepartmentDetails"
+          },
+          "description": "Department details"
+        }
+      }
+    },
+    "DepartmentDetails": {
+      "type": "object",
+      "properties": {
+        "departmentId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "department id in system"
+        },
+        "departmentName": {
+          "type": "string",
+          "description": "department name"
         }
       }
     },

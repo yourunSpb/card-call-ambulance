@@ -3,11 +3,14 @@ package ru.ccamgmt.service.handler;
 import ru.ccamgmt.contracts.AddCardCallRequest;
 import ru.ccamgmt.contracts.AnswerDetails;
 import ru.ccamgmt.contracts.BrigadeDetails;
+import ru.ccamgmt.contracts.DepartmentDetails;
+import ru.ccamgmt.contracts.DepartmentsResponse;
 import ru.ccamgmt.contracts.FormSectionsResponse;
 import ru.ccamgmt.contracts.LookupSectionDetails;
 import ru.ccamgmt.contracts.QuestionDetails;
 import ru.ccamgmt.contracts.SectionDetails;
 import ru.ccamgmt.domain.dao.CardCallDAO;
+import ru.ccamgmt.domain.dao.DepartmentDAO;
 import ru.ccamgmt.domain.dao.SectionDAO;
 import ru.ccamgmt.domain.entity.CardCall;
 import ru.ccamgmt.domain.entity.StatusType;
@@ -40,6 +43,24 @@ public class CardCallHandler {
 
     @EJB
     CardCallDAO cardCallDAO;
+
+    @EJB
+    DepartmentDAO departmentDAO;
+
+    public Response cardCallDepartmentListHandler() {
+        DepartmentsResponse departmentsResponse = new DepartmentsResponse();
+        List<DepartmentDetails> departmentsDetails = new ArrayList<>();
+        List<Department> departments = departmentDAO.findAll();
+        for(Department department: departments) {
+            DepartmentDetails details = new DepartmentDetails();
+            details.setDepartmentId(department.getId());
+            details.setDepartmentName(department.getDepartmentName());
+
+            departmentsDetails.add(details);
+        }
+        departmentsResponse.setDepartments(departmentsDetails);
+        return Response.ok(departmentsResponse).build();
+    }
 
     public Response addOrEditHandler(AddCardCallRequest body) {
         CardCall cardCall = new CardCall();

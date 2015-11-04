@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import ru.ccamgmt.contracts.AddCardCallRequest;
+import ru.ccamgmt.contracts.DepartmentsResponse;
 import ru.ccamgmt.contracts.FormSectionsResponse;
 import ru.ccamgmt.contracts.MedicsResponse;
 import ru.ccamgmt.service.handler.CardCallHandler;
@@ -38,11 +39,24 @@ public class CardCallApiImpl implements CardCallApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Response with actual data"),
             @ApiResponse(code = 400, message = "Bad request"),
-            @ApiResponse(code = 404, message = "Not Found") })
+            @ApiResponse(code = 404, message = "Not Found")})
     @Override
     @Produces(MediaType.APPLICATION_JSON)
     public Response cardCallAddOrEditPost(@ApiParam(value = "", required = true) AddCardCallRequest body) throws NotFoundException {
         return cardCallHandler.addOrEditHandler(body);
+    }
+
+    @GET
+    @Path("/departmentList")
+    @ApiOperation(value = "Get all the departments at the substation", notes = "This method returns list of Departments", response = DepartmentsResponse.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Response with actual data"),
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 404, message = "Not Found")})
+    @Override
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response cardCallDepartmentListGet() throws NotFoundException {
+        return cardCallHandler.cardCallDepartmentListHandler();
     }
 
     @GET
@@ -51,7 +65,7 @@ public class CardCallApiImpl implements CardCallApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Response with actual data"),
             @ApiResponse(code = 400, message = "Bad request"),
-            @ApiResponse(code = 404, message = "Not Found") })
+            @ApiResponse(code = 404, message = "Not Found")})
     @Override
     @Produces(MediaType.APPLICATION_JSON)
     public Response cardCallFormSectionsGet() throws NotFoundException {
