@@ -3,18 +3,9 @@ package ru.ccamgmt.domain.entity.brigade;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by Yuriy Stolyarenko on 25.10.2015.
@@ -34,8 +25,15 @@ public class Department implements Serializable {
     @Column(name = "DEPARTMENT_NAME")
     private String departmentName;
 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "department", cascade = CascadeType.ALL)
-    private Brigade brigade;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "department")
+    private Set<Brigade> brigades;
+
+    public Department() {
+    }
+
+    public Department(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
         return id;
@@ -53,12 +51,12 @@ public class Department implements Serializable {
         this.departmentName = departmentName;
     }
 
-    public Brigade getBrigade() {
-        return brigade;
+    public Set<Brigade> getBrigades() {
+        return brigades;
     }
 
-    public void setBrigade(Brigade brigade) {
-        this.brigade = brigade;
+    public void setBrigades(Set<Brigade> brigades) {
+        this.brigades = brigades;
     }
 
     @Override

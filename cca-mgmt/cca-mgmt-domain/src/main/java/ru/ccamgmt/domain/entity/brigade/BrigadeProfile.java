@@ -3,18 +3,9 @@ package ru.ccamgmt.domain.entity.brigade;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by Yuriy Stolyarenko on 25.10.2015.
@@ -37,8 +28,16 @@ public class BrigadeProfile implements Serializable {
     @Column(name = "TRANSCRIPT")
     private String transcript;
 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "brigadeProfile", cascade = CascadeType.ALL)
-    private Brigade brigade;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "brigadeProfile")
+    private Set<Brigade> brigades;
+
+    public BrigadeProfile() {
+    }
+
+    public BrigadeProfile(Long id) {
+        this.id = id;
+    }
+
 
     public Long getId() {
         return id;
@@ -64,12 +63,12 @@ public class BrigadeProfile implements Serializable {
         this.transcript = transcript;
     }
 
-    public Brigade getBrigade() {
-        return brigade;
+    public Set<Brigade> getBrigades() {
+        return brigades;
     }
 
-    public void setBrigade(Brigade brigade) {
-        this.brigade = brigade;
+    public void setBrigades(Set<Brigade> brigades) {
+        this.brigades = brigades;
     }
 
     @Override

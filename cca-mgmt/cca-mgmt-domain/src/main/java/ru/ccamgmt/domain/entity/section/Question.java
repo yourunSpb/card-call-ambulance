@@ -55,9 +55,15 @@ public class Question implements Serializable {
     @Enumerated(EnumType.STRING)
     public AnswerType answerType;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "LOOKUP_ID")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
     private Set<LookupSection> lookupSections;
+
+    public Question() {
+    }
+
+    public Question(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
         return id;

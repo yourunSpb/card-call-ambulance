@@ -135,7 +135,7 @@
         "cardCallId": {
           "type": "integer",
           "format": "int64",
-          "description": "If this field is present then update the map with the current call ID"
+          "description": "If this field is present then update the card with the current call ID"
         },
         "brigade": {
           "$ref": "#/definitions/BrigadeDetails",
@@ -144,7 +144,7 @@
         "sections": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/LookupSection"
+            "$ref": "#/definitions/LookupSectionDetails"
           },
           "description": "lookup section"
         },
@@ -160,9 +160,14 @@
         }
       }
     },
-    "LookupSection": {
+    "LookupSectionDetails": {
       "type": "object",
       "properties": {
+        "lookupSectionId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "If this field is present then update the lookup section with the current ID"
+        },
         "cardCallId": {
           "type": "integer",
           "format": "int64",
@@ -187,6 +192,11 @@
     "BrigadeDetails": {
       "type": "object",
       "properties": {
+        "brigadeId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "If this field is present then update the bridate with the current brigade ID"
+        },
         "brigadeNumber": {
           "type": "integer",
           "format": "int64",

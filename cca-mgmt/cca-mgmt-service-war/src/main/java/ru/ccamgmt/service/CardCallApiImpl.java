@@ -42,7 +42,7 @@ public class CardCallApiImpl implements CardCallApi {
     @Override
     @Produces(MediaType.APPLICATION_JSON)
     public Response cardCallAddOrEditPost(@ApiParam(value = "", required = true) AddCardCallRequest body) throws NotFoundException {
-        return null;
+        return cardCallHandler.addOrEditHandler(body);
     }
 
     @GET
