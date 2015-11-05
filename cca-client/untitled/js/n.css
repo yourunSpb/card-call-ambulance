@@ -1,5 +1,5 @@
 .strong{
-    text-align: justify;
+   text-align: left;
 }
 
 .drobdown{
@@ -9,3 +9,8 @@ display: none;
  label:hover .drobdown{
     display: block;
 }
+
+.field{
+    text-align: left;
+}
+
