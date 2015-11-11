@@ -1,16 +1,9 @@
 package ru.ccamgmt.service.handler;
 
-import ru.ccamgmt.contracts.AddCardCallRequest;
-import ru.ccamgmt.contracts.AnswerDetails;
-import ru.ccamgmt.contracts.BrigadeDetails;
-import ru.ccamgmt.contracts.DepartmentDetails;
-import ru.ccamgmt.contracts.DepartmentsResponse;
-import ru.ccamgmt.contracts.FormSectionsResponse;
-import ru.ccamgmt.contracts.LookupSectionDetails;
-import ru.ccamgmt.contracts.QuestionDetails;
-import ru.ccamgmt.contracts.SectionDetails;
+import ru.ccamgmt.contracts.*;
 import ru.ccamgmt.domain.dao.CardCallDAO;
 import ru.ccamgmt.domain.dao.DepartmentDAO;
+import ru.ccamgmt.domain.dao.ProfileDAO;
 import ru.ccamgmt.domain.dao.SectionDAO;
 import ru.ccamgmt.domain.entity.CardCall;
 import ru.ccamgmt.domain.entity.StatusType;
@@ -46,6 +39,25 @@ public class CardCallHandler {
 
     @EJB
     DepartmentDAO departmentDAO;
+
+    @EJB
+    ProfileDAO profileDAO;
+
+    public Response cardCallProfileListHandler() {
+        ProfileResponse profileRespons = new ProfileResponse();
+        List<ProfileDetails> profileDetails = new ArrayList<>();
+        List<BrigadeProfile> profiles = profileDAO.findAll();
+        for(BrigadeProfile profile: profiles) {
+            ProfileDetails details = new ProfileDetails();
+            details.setProfileId(profile.getId());
+            details.setTranscript(profile.getTranscript());
+            details.setReduction(profile.getReduction());
+
+            profileDetails.add(details);
+        }
+        profileRespons.setProfiles(profileDetails);
+        return Response.ok(profileRespons).build();
+    }
 
     public Response cardCallDepartmentListHandler() {
         DepartmentsResponse departmentsResponse = new DepartmentsResponse();

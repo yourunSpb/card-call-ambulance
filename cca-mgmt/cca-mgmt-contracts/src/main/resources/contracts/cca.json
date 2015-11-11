@@ -69,6 +69,32 @@
         }
       }
     },
+    "/cardCall/profileList": {
+      "get": {
+        "summary": "Get all the Profiles at the substation",
+        "description": "This method returns list of Profiles",
+        "responses": {
+          "200": {
+            "description": "Response with actual data",
+            "schema": {
+              "$ref": "#/definitions/ProfileResponse"
+            }
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Bad request"
+          },
+          "404": {
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/cardCall/addOrEdit": {
       "post": {
         "summary": "add or update card call",
@@ -358,6 +384,37 @@
         }
       }
     },
+    "ProfileResponse": {
+      "type": "object",
+      "properties": {
+        "profiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProfileDetails"
+          },
+          "description": "Profile details"
+        }
+      }
+    },
+    "ProfileDetails": {
+      "type": "object",
+      "properties": {
+        "profileId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "profile id in system"
+        },
+        "reduction": {
+          "type": "string",
+          "description": "reduction"
+        },
+        "transcript": {
+          "type": "string",
+          "description": "transcript"
+        }
+      }
+    },
+
     "MedicDetails": {
       "type": "object",
       "properties": {

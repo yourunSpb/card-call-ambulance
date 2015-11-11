@@ -5,10 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import ru.ccamgmt.contracts.AddCardCallRequest;
-import ru.ccamgmt.contracts.DepartmentsResponse;
-import ru.ccamgmt.contracts.FormSectionsResponse;
-import ru.ccamgmt.contracts.MedicsResponse;
+import ru.ccamgmt.contracts.*;
 import ru.ccamgmt.service.handler.CardCallHandler;
 import ru.ccamgmt.stubs.CardCallApi;
 import ru.ccamgmt.stubs.NotFoundException;
@@ -70,5 +67,20 @@ public class CardCallApiImpl implements CardCallApi {
     @Produces(MediaType.APPLICATION_JSON)
     public Response cardCallFormSectionsGet() throws NotFoundException {
         return cardCallHandler.sectionListHandler();
+    }
+
+    @GET
+    @Path("/profileList")
+    @ApiOperation(value = "Get all the Profiles at the substation", notes = "This method returns list of Profiles", response = ProfileResponse.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Response with actual data"),
+
+            @ApiResponse(code = 400, message = "Bad request"),
+
+            @ApiResponse(code = 404, message = "Not Found") })
+    @Override
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response cardCallProfileListGet() throws NotFoundException {
+        return cardCallHandler.cardCallProfileListHandler();
     }
 }
