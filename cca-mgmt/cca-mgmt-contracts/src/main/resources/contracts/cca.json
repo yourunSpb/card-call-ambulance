@@ -95,6 +95,32 @@
         }
       }
     },
+    "/cardCall/outCardCall": {
+      "get": {
+        "summary": "Get all the Profiles at the substation",
+        "description": "This method returns list of Profiles",
+        "responses": {
+          "200": {
+            "description": "Response with actual data",
+            "schema": {
+              "$ref": "#/definitions/ProfileResponse"
+            }
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Bad request"
+          },
+          "404": {
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/cardCall/addOrEdit": {
       "post": {
         "summary": "add or update card call",
@@ -414,7 +440,55 @@
         }
       }
     },
+    "outCardCallResponse": {
+      "type": "object",
+      "properties": {
+        "CardCalls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OutCardCallDetails"
+          },
+          "description": "CardCall details"
+        }
+      }
+    },
+    "OutCardCallDetails": {
+      "type": "object",
+      "properties": {
+        "CardCallId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "card call id in system"
+        },
+        "CreateDataTime": {
+          "type": "string",
+          "format": "date",
+          "description": "Data Time"
+        },
+        "status": {
+          "type": "string",
+          "description": "status"
+        },
+        "updatedBy": {
+          "$ref": "#/definitions/MedicDetails",
+          "description": "updatedBy"
+        },
+        "updatedDataTime": {
+          "type": "string",
+          "format": "date",
+          "description": "updatedDateTime"
+        },
+        "cardCallContent": {
+          "type": "string",
+          "description": "Content"
+        },
+        "brigade": {
 
+          "$ref": "#/definitions/BrigadeDetails",
+          "description": "brigade"
+        }
+      }
+    },
     "MedicDetails": {
       "type": "object",
       "properties": {

@@ -177,4 +177,6 @@ public class CardCall implements Serializable {
                 ", brigade='" + brigade + '\'' +
                 '}';
     }
+
+
 }

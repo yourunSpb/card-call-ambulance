@@ -1,6 +1,7 @@
 package ru.ccamgmt.service.handler;
 
 import ru.ccamgmt.contracts.*;
+import ru.ccamgmt.domain.dao.OutCardCallDAO;
 import ru.ccamgmt.domain.dao.CardCallDAO;
 import ru.ccamgmt.domain.dao.DepartmentDAO;
 import ru.ccamgmt.domain.dao.ProfileDAO;
@@ -42,6 +43,48 @@ public class CardCallHandler {
 
     @EJB
     ProfileDAO profileDAO;
+
+    @EJB
+    OutCardCallDAO outCardCallDAO;
+
+
+    public Response outCardCallListHandler() {
+        OutCardCallResponse outCardCallRespons = new OutCardCallResponse();
+        List<OutCardCallDetails> outCardCallDetails = new ArrayList<>();
+        List<CardCall> outCardCalls = outCardCallDAO.findAll();
+        for(CardCall outCardCall: outCardCalls) {
+            OutCardCallDetails details = new OutCardCallDetails();
+            details.setCardCallId(outCardCall.getId());
+            details.setCreateDataTime(outCardCall.getCreateDate());
+            details.setStatus(outCardCall.getStatus().name());
+
+
+            MedicDetails medicDetails = new MedicDetails();
+            medicDetails.setMedicId(outCardCall.getUpdateBy().getId());
+            medicDetails.setFirstName(outCardCall.getUpdateBy().getMedicUser().getFirstName());
+            medicDetails.setMiddleName(outCardCall.getUpdateBy().getMedicUser().getMiddleName());
+            medicDetails.setPosition(outCardCall.getUpdateBy().getMedicPosition().getPositionValue());
+            details.setUpdatedBy(medicDetails);
+
+            BrigadeDetails brigadeDetails = new BrigadeDetails();
+            brigadeDetails.setBrigadeId(outCardCall.getBrigade().getId());
+            brigadeDetails.setBrigadeNumber(outCardCall.getBrigade().getBrigadeNumber());
+            brigadeDetails.setDepartmentId(outCardCall.getBrigade().getDepartment().getId());
+            List<Long> medics = new ArrayList<>();
+            for (Medic medic: outCardCall.getBrigade().getMedics()) {
+                medics.add(medic.getId());
+            }
+            brigadeDetails.setMedicList(medics);
+            details.setBrigade(brigadeDetails);
+            details.setUpdatedDataTime(outCardCall.getUpdateDate());
+
+            outCardCallDetails.add(details);
+        }
+        outCardCallRespons.setCardCalls(outCardCallDetails);
+        return Response.ok(outCardCallRespons).build();
+    }
+
+
 
     public Response cardCallProfileListHandler() {
         ProfileResponse profileRespons = new ProfileResponse();
