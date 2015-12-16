@@ -43,6 +43,41 @@
         }
       }
     },
+    "/user/addMedicUser": {
+      "post": {
+        "summary": "add or update MedicUser",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddMedicUserRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response with actual data",
+            "schema": {
+              "$ref": "#/definitions/MedicsResponse"
+            }
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Bad request"
+          },
+          "404": {
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/cardCall/departmentList": {
       "get": {
         "summary": "Get all the departments at the substation",
@@ -264,6 +299,40 @@
         "answerValue": {
           "type": "string",
           "description": "answer value"
+        }
+      }
+    },
+    "AddMedicUserRequest": {
+      "type": "object",
+      "properties": {
+
+        "firstName": {
+          "type": "string",
+          "description": "brigade details"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "brigade details"
+        },
+        "medicPositionId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "medicPosition"
+        },
+        "middleName": {
+          "type": "string",
+          "description": "middleNameUser"
+        },
+        "mailAddress": {
+          "type": "string",
+          "description": "mailAddressUser"
+        },
+        "roleList": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
         }
       }
     },
