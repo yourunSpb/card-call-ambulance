@@ -7,7 +7,7 @@ public class ServiceCoreConstants {
 
     public static final int SECTION_NAME_LENGTH = 255;
 
-    public static final int SECTION_DESCRIPTION_LENGTH = 20;
+    public static final int SECTION_DESCRIPTION_LENGTH = 255;
 
     public static final int QUESTION_TEXT_LENGTH = 255;
 

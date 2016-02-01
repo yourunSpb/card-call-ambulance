@@ -1,7 +1,6 @@
 package ru.ccamgmt.service.handler;
 
 import ru.ccamgmt.contracts.*;
-import ru.ccamgmt.domain.dao.OutCardCallDAO;
 import ru.ccamgmt.domain.dao.CardCallDAO;
 import ru.ccamgmt.domain.dao.DepartmentDAO;
 import ru.ccamgmt.domain.dao.ProfileDAO;
@@ -44,14 +43,13 @@ public class CardCallHandler {
     @EJB
     ProfileDAO profileDAO;
 
-    @EJB
-    OutCardCallDAO outCardCallDAO;
+
 
 
     public Response outCardCallListHandler() {
         OutCardCallResponse outCardCallRespons = new OutCardCallResponse();
         List<OutCardCallDetails> outCardCallDetails = new ArrayList<>();
-        List<CardCall> outCardCalls = outCardCallDAO.findAll();
+        List<CardCall> outCardCalls = cardCallDAO.findAll();
         for(CardCall outCardCall: outCardCalls) {
             OutCardCallDetails details = new OutCardCallDetails();
             details.setCardCallId(outCardCall.getId());
@@ -171,6 +169,7 @@ public class CardCallHandler {
         for (Section section: sectionList) {
             SectionDetails sectionDetails = new SectionDetails();
             sectionDetails.setSectionId(section.getId());
+            sectionDetails.setSectionDescription(section.getSectionDescription());
             sectionDetails.setSectionName(section.getSectionName());
             sectionDetails.setQuestions(getQuestionsDetail(section.getQuestions()));
 
@@ -187,7 +186,8 @@ public class CardCallHandler {
                 QuestionDetails questionDetails = new QuestionDetails();
                 questionDetails.setQuestionId(question.getId());
                 questionDetails.setAnswerType(question.getAnswerType().getLabel());
-                questionDetails.setQuestuinText(question.getQuestionText());
+                questionDetails.setQuestionOrder(question.getQuestionOrder());
+                questionDetails.setQuestionText(question.getQuestionText());
                 questionDetails.setAnswers(getAnswersDetail(question.getAnswers()));
 
                 questionDetailses.add(questionDetails);

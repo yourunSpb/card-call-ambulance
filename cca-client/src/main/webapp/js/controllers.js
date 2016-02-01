@@ -11,12 +11,13 @@ ccaClientControllers.controller('CardCallUpdateCtrl', ['$scope',
                                                        'Medics',
                                function($scope, Departments, FormSections, Profiles, Medics) {
 
+
     $scope.cardCall = {
         departmentSelect: null,
         profileSelect: null,
         brigadeNumber: null,
         medics: [],
-        answerSelect: null
+        questions: null
 
     }
     $scope.hello = 'Hello Habr!';
@@ -34,7 +35,17 @@ ccaClientControllers.controller('CardCallUpdateCtrl', ['$scope',
     });
 
     FormSections.getFormSectionList(function(response) {
-        $scope.questions = response.sections[0].questions;
+        $scope.sections = response.sections;
+        $scope.currentSection = response.sections[0];
     });
+
+
+    $scope.onClickTab = function (section) {
+        $scope.currentSection = section;
+    }
+
+    $scope.isActiveTab = function(section) {
+        return section.sectionId == $scope.currentSection.sectionId;
+    }
 
 }]);

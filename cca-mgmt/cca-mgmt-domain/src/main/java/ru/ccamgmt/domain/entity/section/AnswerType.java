@@ -23,6 +23,10 @@ public enum AnswerType {
      * Singleline text answer type
      */
     TEXT_BOX("TEXT_BOX"),
+
+    TEXT_TIME_BOX("TEXT_TIME_BOX"),
+
+    SELECT_BOX("SELECT_BOX"),
     /**
      * Multiline text answer type
      */

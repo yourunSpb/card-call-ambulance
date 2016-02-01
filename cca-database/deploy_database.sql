@@ -257,7 +257,7 @@ create table SECTION
 (
    SECTION_ID           NUMBER               not null,
    SECTION_NAME         VARCHAR2(255)        not null,
-   SECTION_DESCRIPTION  VARCHAR2(20)
+   SECTION_DESCRIPTION  VARCHAR2(255)
 );
 
 alter table SECTION

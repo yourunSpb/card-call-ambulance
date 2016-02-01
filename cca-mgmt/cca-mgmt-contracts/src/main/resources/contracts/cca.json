@@ -389,6 +389,10 @@
           "format": "int64",
           "description": "section id in system"
         },
+        "sectionDescription": {
+          "type": "string",
+          "description": "section description"
+        },
         "sectionName": {
           "type": "string",
           "description": "section name in system"
@@ -410,11 +414,16 @@
           "format": "int64",
           "description": "question id in system"
         },
+        "questionOrder": {
+          "type": "integer",
+          "format": "int64",
+          "description": "questions order"
+        },
         "answerType": {
           "type": "string",
           "description": "answer type ('TEXT_BOX', 'NEW_CHECK_BOX')"
         },
-        "questuinText": {
+        "questionText": {
           "type": "string",
           "description": "question text"
         },

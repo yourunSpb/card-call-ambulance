@@ -23,22 +23,45 @@
     </form>
 </div>
 
-<hr>
-<tt>departmentSelect = {{cardCall.departmentSelect}}</tt><br/>
-<tt>brigadeSelect = {{cardCall.brigadeNumber}}</tt><br/>
-<tt>profileSelect = {{cardCall.profileSelect}}</tt><br/>
-<tt>medicsSelect = {{cardCall.medics}}</tt><br/>
-
 
 <hr>
-<div ng-repeat = "data in questions">
-    <div ng-if="data.answerType == 'NEW_CHECK_BOX' ">
-        <label for="sectionSelect">{{data.questuinText}}</label>
-        <select name="sectionSelect" id="sectionSelect" ng-model="cardCall.answerSelect">
-            <option ng-repeat="option in data.answers" value="{{option.answerId}}">{{option.answerValue}}</option>
-        </select>
-    </div>
-    <div ng-if="data.answerType == 'TEXT_BOX' ">
-        <label>{{data.questuinText}}<input type="text" name="brigadeNumber"></label>
+<!--<div ng-repeat = "data in questions | orderBy:'+questionOrder'">-->
+    <!--<div ng-if="data.answerType == 'SELECT_BOX' ">-->
+        <!--<label for="sectionSelect">{{data.questionText}}</label>-->
+        <!--<select name="sectionSelect" id="sectionSelect" ng-model="cardCall.answerSelect">-->
+            <!--<option ng-repeat="option in data.answers" value="{{option.answerId}}">{{option.answerValue}}</option>-->
+        <!--</select>-->
+    <!--</div>-->
+    <!--<div ng-if="data.answerType == 'TEXT_BOX' ">-->
+        <!--<label>{{data.questionText}}<input type="text" name="brigadeNumber"></label>-->
+    <!--</div>-->
+    <!--<div ng-if="data.answerType == 'TEXT_TIME_BOX' ">-->
+        <!--<label>{{data.questionText}}<input type="time" placeholder="HH:mm" name="brigadeNumber"></label>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+<div id="tabs">
+    <ul>
+        <li ng-repeat="section in sections"
+            ng-class="{active:isActiveTab(section)}"
+            ng-click="onClickTab(section)">{{section.sectionName}}</li>
+    </ul>
+    <div id="mainView">
+        <h3>{{currentSection.sectionDescription}}</h3>
+        <div ng-repeat = "data in currentSection.questions | orderBy:'+questionOrder'">
+            <div ng-if="data.answerType == 'SELECT_BOX' ">
+                <label for="{{data.questionId}}">{{data.questionText}}</label>
+                <select id="{{data.questionId}}" ng-model="cardCall.questions[data.questionId].answerSelect">
+                    <option ng-repeat="option in data.answers" value="{{option.answerId}}">{{option.answerValue}}</option>
+                </select>
+            </div>
+            <div ng-if="data.answerType == 'TEXT_BOX' ">
+                <label>{{data.questionText}}<input type="text" name="brigadeNumber"></label>
+            </div>
+            <div ng-if="data.answerType == 'TEXT_TIME_BOX' ">
+                <label>{{data.questionText}}<input type="time" placeholder="HH:mm" name="brigadeNumber"></label>
+            </div>
+        </div>
     </div>
 </div>
