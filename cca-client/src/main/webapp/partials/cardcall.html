@@ -1,0 +1,44 @@
+<div class="well">
+    <form>
+        <fieldset>
+            <legend>КАРТА ВЫЗОВА службы скорой медицинской помощи Санкт-Петербурга</legend>
+
+            <label for="departmentSelect">п/ст. (ОСМП), # </label>
+            <select name="departmentSelect" id="departmentSelect" ng-model="cardCall.departmentSelect">
+                <option ng-repeat="option in departments" value="{{option.departmentId}}">{{option.departmentName}}</option>
+            </select>
+            <br/>
+            <label>бригада # <input type="text" placeholder="укажите номер бригады" name="brigadeNumber" ng-model="cardCall.brigadeNumber"></label>
+            <br/>
+            <label for="profileSelect">профиль # </label>
+            <select name="profileSelect" id="profileSelect" ng-model="cardCall.profileSelect">
+                <option ng-repeat="option in profiles" value="{{option.profileId}}">{{option.transcript}}</option>
+            </select>
+            <br/>
+            <label>Состав:</label>
+            <label ng-repeat="option in medics">
+                <input type="checkbox" data-checklist-model="cardCall.medics" data-checklist-value="{{option}}"> {{option.firstName + ' ' + option.middleName}}
+            </label>
+        </fieldset>
+    </form>
+</div>
+
+<hr>
+<tt>departmentSelect = {{cardCall.departmentSelect}}</tt><br/>
+<tt>brigadeSelect = {{cardCall.brigadeNumber}}</tt><br/>
+<tt>profileSelect = {{cardCall.profileSelect}}</tt><br/>
+<tt>medicsSelect = {{cardCall.medics}}</tt><br/>
+
+
+<hr>
+<div ng-repeat = "data in questions">
+    <div ng-if="data.answerType == 'NEW_CHECK_BOX' ">
+        <label for="sectionSelect">{{data.questuinText}}</label>
+        <select name="sectionSelect" id="sectionSelect" ng-model="cardCall.answerSelect">
+            <option ng-repeat="option in data.answers" value="{{option.answerId}}">{{option.answerValue}}</option>
+        </select>
+    </div>
+    <div ng-if="data.answerType == 'TEXT_BOX' ">
+        <label>{{data.questuinText}}<input type="text" name="brigadeNumber"></label>
+    </div>
+</div>
