@@ -51,8 +51,17 @@ li {
     border: 1px solid black;
 	clear: both;
 	padding: 0 1em;
+	float:left;
 }
 .active {
     background-color: #FFF;
     color: #000;
+}
+
+#block
+{
+  width:350px;
+  float:left;
+  padding:10px;
+
 }
