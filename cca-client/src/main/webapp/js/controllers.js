@@ -9,18 +9,22 @@ ccaClientControllers.controller('CardCallUpdateCtrl', ['$scope',
                                                        'FormSections',
                                                        'Profiles',
                                                        'Medics',
-                               function($scope, Departments, FormSections, Profiles, Medics) {
+                                                       'AddOrEditCard',
+                               function($scope, Departments, FormSections, Profiles, Medics, AddOrEditCard) {
 
-
+    $scope.it = 0;
     $scope.cardCall = {
-        departmentSelect: null,
-        profileSelect: null,
-        brigadeNumber: null,
-        medics: [],
-        questions: null
+        brigade: {
+            brigadeNumber: null,
+            departmentId: null,
+            profileId: null,
+            medicList: [],
+        },
+        sections: [],
+        updatedBy: 4
 
-    }
-    $scope.hello = 'Hello Habr!';
+    };
+    $scope.populates = [];
 
     Medics.getMedicList(function(response) {
         $scope.medics = response.medics;
@@ -46,6 +50,20 @@ ccaClientControllers.controller('CardCallUpdateCtrl', ['$scope',
 
     $scope.isActiveTab = function(section) {
         return section.sectionId == $scope.currentSection.sectionId;
+    }
+
+    $scope.updateAnswer = function(it, questionId, answerValue, answerId) {
+        $scope.populates[it].questionId = questionId
+    }
+
+    $scope.saveButton = function() {
+
+        for (var count = 0; count < $scope.populates.length; count++) {
+            if ($scope.populates[count] != null) {
+                $scope.cardCall.sections.push($scope.populates[count]);
+            }
+        }
+        AddOrEditCard.saveCardCall($scope.cardCall);
     }
 
 }]);

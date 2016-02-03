@@ -32,3 +32,11 @@ ccaClientService.factory('Medics', ['$resource',
     });
   }]);
 
+ccaClientService.factory('AddOrEditCard', ['$resource',
+  function($resource){
+    return $resource('http://localhost:7001//ccaMgmt/cardCall/addOrEdit', {}, {
+      saveCardCall: {method:'POST', headers: [{'Content-Type': 'application/json'}]}
+    });
+  }]);
+
+

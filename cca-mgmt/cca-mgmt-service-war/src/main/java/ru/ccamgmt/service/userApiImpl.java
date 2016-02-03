@@ -57,6 +57,6 @@ public class UserApiImpl implements UserApi {
    @Override
     @Produces(MediaType.APPLICATION_JSON)
     public Response userMedicListGet() throws NotFoundException {
-        return userHandler.medicListHandler();
+        return userHandler.medicListHandle();
     }
 }

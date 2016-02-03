@@ -24,7 +24,7 @@ public class UserHandler {
     MedicDAO medicDAO;
 
 
-    public Response medicListHandler() {
+    public Response medicListHandle() {
         MedicsResponse medicResponse = new MedicsResponse();
         List<MedicDetails> medicDetailsList = new ArrayList<>();
         List<Medic> medicList = medicDAO.findAll();

@@ -1,26 +1,27 @@
-
 <div class="well">
 
-        <fieldset>
-            <legend>КАРТА ВЫЗОВА службы скорой медицинской помощи Санкт-Петербурга</legend>
+    <fieldset>
+        <legend>КАРТА ВЫЗОВА службы скорой медицинской помощи Санкт-Петербурга</legend>
 
-            <label for="departmentSelect">п/ст. (ОСМП), # </label>
-            <select name="departmentSelect" id="departmentSelect" ng-model="cardCall.departmentSelect">
-                <option ng-repeat="option in departments" value="{{option.departmentId}}">{{option.departmentName}}</option>
-            </select>
-            <br/>
-            <label>бригада # <input type="text" placeholder="укажите номер бригады" name="brigadeNumber" ng-model="cardCall.brigadeNumber"></label>
-            <br/>
-            <label for="profileSelect">профиль # </label>
-            <select name="profileSelect" id="profileSelect" ng-model="cardCall.profileSelect">
-                <option ng-repeat="option in profiles" value="{{option.profileId}}">{{option.transcript}}</option>
-            </select>
-            <br/>
-            <label>Состав:</label>
-            <label ng-repeat="option in medics">
-                <input type="checkbox" data-checklist-model="cardCall.medics" data-checklist-value="{{option}}"> {{option.firstName + ' ' + option.middleName}}
-            </label>
-        </fieldset>
+        <label for="departmentSelect">п/ст. (ОСМП), # </label>
+        <select name="departmentSelect" id="departmentSelect" ng-model="cardCall.brigade.departmentId">
+            <option ng-repeat="option in departments" value="{{option.departmentId}}">{{option.departmentName}}</option>
+        </select>
+        <br/>
+        <label>бригада # <input type="text" placeholder="укажите номер бригады" name="brigadeNumber"
+                                ng-model="cardCall.brigade.brigadeNumber"></label>
+        <br/>
+        <label for="profileSelect">профиль # </label>
+        <select name="profileSelect" id="profileSelect" ng-model="cardCall.brigade.profileId">
+            <option ng-repeat="option in profiles" value="{{option.profileId}}">{{option.transcript}}</option>
+        </select>
+        <br/>
+        <label>Состав:</label>
+        <label ng-repeat="option in medics">
+            <input type="checkbox" checkbox-group/>
+            {{option.firstName + ' ' + option.middleName}}
+        </label>
+    </fieldset>
 
 </div>
 
@@ -28,27 +29,36 @@
     <ul>
         <li ng-repeat="section in sections"
             ng-class="{active:isActiveTab(section)}"
-            ng-click="onClickTab(section)">{{section.sectionName}}</li>
+            ng-click="onClickTab(section)">{{section.sectionName}}
+        </li>
     </ul>
     <div id="mainView">
         <h3>{{currentSection.sectionDescription}}</h3>
 
-        <div id="block" ng-repeat = "data in currentSection.questions | orderBy:'+questionOrder'">
+        <div id="block" ng-repeat="data in currentSection.questions | orderBy:'+questionOrder'">
             <div ng-if="data.answerType == 'SELECT_BOX' ">
                 <label for="{{data.questionId}}">{{data.questionText}}</label>
-                <select id="{{data.questionId}}" ng-model="cardCall.questions[data.questionId].answerSelect">
-                    <option ng-repeat="option in data.answers" value="{{option.answerId}}">{{option.answerValue}}</option>
+                <select id="{{data.questionId}}" ng-model="populates[$index].answerId" ng-change="updateAnswer($index, data.questionId)">
+                    <option ng-repeat="option in data.answers" value="{{option.answerId}}">{{option.answerValue}}
+                    </option>
                 </select>
             </div>
 
             <div ng-if="data.answerType == 'TEXT_BOX' ">
-                <label>{{data.questionText}}<input type="text" name="brigadeNumber"></label>
+                <label>{{data.questionText}}<input type="text" ng-model="populates[$index].answerValue"
+                                                   ng-change="updateAnswer($index, data.questionId)"></label>
             </div>
             <div ng-if="data.answerType == 'TEXT_TIME_BOX' ">
-                <label>{{data.questionText}}<input type="time" placeholder="HH:mm" name="brigadeNumber"></label>
+                <label>{{data.questionText}}<input type="time" placeholder="HH:mm" ng-model="populates[$index].answerValue"
+                                                   ng-change="updateAnswer($index, data.questionId)"></label>
             </div>
         </div>
 
     </div>
 
 </div>
+<pre>{{cardCall | json}}</pre>
+
+<button ng-click="saveButton()">
+    Save
+</button>
