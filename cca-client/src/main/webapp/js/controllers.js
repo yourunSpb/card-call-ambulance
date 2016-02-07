@@ -4,6 +4,26 @@
 
 var ccaClientControllers = angular.module('ccaClientControllers', []);
 
+
+ccaClientControllers.controller('CardCallListCtrl', ['$scope', '$location', 'CardCallList',
+  function($scope, $location, CardCallList) {
+      CardCallList.getCardCallList(function(response) {
+        $scope.cardCalls = response.cardCalls;
+//        $scope.orderProp = 'cardCallId';
+
+      });
+      $scope.go = function ( path ) {
+          $location.path( path );
+      };
+      $scope.predicate = 'cardCallId';
+      $scope.reverse = true;
+      $scope.order = function(predicate) {
+         $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+         $scope.predicate = predicate;
+      };
+}]);
+
+
 ccaClientControllers.controller('CardCallUpdateCtrl', ['$scope',
                                                        'Departments',
                                                        'FormSections',
@@ -13,7 +33,7 @@ ccaClientControllers.controller('CardCallUpdateCtrl', ['$scope',
                                function($scope, Departments, FormSections, Profiles, Medics, AddOrEditCard) {
 
     $scope.it = 0;
-    $scope.cardCall = {
+    $scope.cardCallDetails = {
         brigade: {
             brigadeNumber: null,
             departmentId: null,
@@ -57,13 +77,13 @@ ccaClientControllers.controller('CardCallUpdateCtrl', ['$scope',
     }
 
     $scope.saveButton = function() {
-
+        $scope.cardCallDetails.sections = [];
         for (var count = 0; count < $scope.populates.length; count++) {
             if ($scope.populates[count] != null) {
-                $scope.cardCall.sections.push($scope.populates[count]);
+                $scope.cardCallDetails.sections.push($scope.populates[count]);
             }
         }
-        AddOrEditCard.saveCardCall($scope.cardCall);
+        AddOrEditCard.saveCardCall($scope.cardCallDetails);
     }
 
 }]);

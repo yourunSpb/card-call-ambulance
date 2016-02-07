@@ -4,6 +4,13 @@
 
 var ccaClientService = angular.module('ccaClientService', ['ngResource']);
 
+ccaClientService.factory('CardCallList', ['$resource',
+  function($resource){
+    return $resource('http://localhost:7001/ccaMgmt/cardCall/List', {}, {
+      getCardCallList: {method:'GET', params:{}, isArray:false}
+    });
+  }]);
+
 ccaClientService.factory('Departments', ['$resource',
   function($resource){
     return $resource('http://localhost:7001/ccaMgmt/cardCall/departmentList', {}, {
