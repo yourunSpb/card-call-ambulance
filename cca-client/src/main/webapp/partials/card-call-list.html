@@ -1,0 +1,92 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <!--Sidebar content-->
+
+            Search: <input ng-model="query">
+            <!--Sort by:-->
+            <!--<select ng-model="orderProp">-->
+                <!--<option value="cardCallId">card call id</option>-->
+                <!--<option value="updatedBy">updated by</option>-->
+                <!--<option value="brigadeNumber">brigade number</option>-->
+                <!--<option value="profile">profile</option>-->
+            <!--</select>-->
+
+        </div>
+        <div class="col-md-10">
+            <!--<ul class="cardCalls">-->
+                <!--<li ng-repeat="cardCall in cardCalls | filter:query | orderBy:orderProp"-->
+                    <!--class="thumbnail phone-listing">-->
+                    <!--<a href="#/card-calls/{{cardCall.cardCallId}}">{{cardCall.cardCallId}}</a>-->
+                    <!--<p>{{cardCall.createDataTime}}</p>-->
+                <!--</li>-->
+            <!--</ul>-->
+
+            <table id="t01">
+                <tr>
+                    <th>
+                        <button ng-click="order('cardCallId')">Card Call Id</button>
+                        <span class="sortorder" ng-show="predicate === 'cardCallId'" ng-class="{reverse:reverse}"></span>
+                    </th>
+                    <th>
+                        <button ng-click="order('createDateTime')">Create Date Time</button>
+                        <span class="sortorder" ng-show="predicate === 'createDateTime'" ng-class="{reverse:reverse}"></span>
+                    </th>
+                    <th>
+                        <button ng-click="order('status')">Status</button>
+                        <span class="sortorder" ng-show="predicate === 'status'" ng-class="{reverse:reverse}"></span>
+                    </th>
+                    <th>
+                        <button ng-click="order('updatedBy')">Updated By</button>
+                        <span class="sortorder" ng-show="predicate === 'updatedBy'" ng-class="{reverse:reverse}"></span>
+                    </th>
+                    <th>
+                        <button ng-click="order('brigadeNumber')">Brigade Number</button>
+                        <span class="sortorder" ng-show="predicate === 'brigadeNumber'" ng-class="{reverse:reverse}"></span>
+                    </th>
+                    <th>
+                        <button ng-click="order('departmentName')">Department Name</button>
+                        <span class="sortorder" ng-show="predicate === 'departmentName'" ng-class="{reverse:reverse}"></span>
+                    </th>
+                    <th>
+                        <button ng-click="order('profile')">Profile</button>
+                        <span class="sortorder" ng-show="predicate === 'profile'" ng-class="{reverse:reverse}"></span>
+                    </th>
+                </tr>
+
+                <tr ng-repeat = "cardCall in cardCalls | filter:query | orderBy:predicate:reverse">
+                    <td>{{ cardCall.cardCallId }}</td>
+                    <td>{{ cardCall.createDateTime }}</td>
+                    <td>{{ cardCall.status }}</td>
+                    <td>{{ cardCall.updatedBy}}</td>
+                    <td>{{ cardCall.brigadeNumber }}</td>
+                    <td>{{ cardCall.departmentName }}</td>
+                    <td>{{ cardCall.profile }}</td>
+                </tr>
+
+            </table>
+
+            <!--<table ng-table="vm.tableParams" class="table" show-filter="true">-->
+                <!--<tr ng-repeat="cardCall in cardCalls">-->
+                    <!--<td title="'Card Call Id'" filter="{ cardCallId: 'number'}" sortable="'cardCallId'">-->
+                        <!--{{cardCall.cardCallId}}</td>-->
+                    <!--<td title="'Create Date Time'" filter="{ createDateTime: 'text'}" sortable="'createDateTime'">-->
+                        <!--{{cardCall.createDateTime}}</td>-->
+                    <!--<td title="'Status'" filter="{ status: 'text'}" sortable="'status'">-->
+                        <!--{{cardCall.status}}</td>-->
+                    <!--<td title="'Update By'" filter="{ updatedBy: 'text'}" sortable="'updatedBy'">-->
+                        <!--{{cardCall.updatedBy}}</td>-->
+                    <!--<td title="'Brigade Number'" filter="{ brigadeNumber: 'number'}" sortable="'brigadeNumber'">-->
+                        <!--{{cardCall.brigadeNumber}}</td>-->
+                    <!--<td title="'Department Name'" filter="{ departmentName: 'text'}" sortable="'departmentName'">-->
+                        <!--{{cardCall.departmentName}}</td>-->
+                    <!--<td title="'Profile'" filter="{ profile: 'text'}" sortable="'profile'">-->
+                        <!--{{cardCall.profile}}</td>-->
+                <!--</tr>-->
+            <!--</table>-->
+        </div>
+    </div>
+</div>
+<button  ng-click="go('/card-calls/create-card-call')" >Create Card Call</button>
+<!--<a class="button" href="#/card-calls/create-card-call">Create Card Call</a>-->
+<!--<button ng-click="go('/home')"></button>-->
