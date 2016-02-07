@@ -55,9 +55,6 @@ public class Question implements Serializable {
     @Enumerated(EnumType.STRING)
     public AnswerType answerType;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
-    private Set<LookupSection> lookupSections;
-
     public Question() {
     }
 
@@ -111,14 +108,6 @@ public class Question implements Serializable {
 
     public void setAnswers(Set<Answer> answers) {
         this.answers = answers;
-    }
-
-    public Set<LookupSection> getLookupSections() {
-        return lookupSections;
-    }
-
-    public void setLookupSections(Set<LookupSection> lookupSections) {
-        this.lookupSections = lookupSections;
     }
 
     @Override

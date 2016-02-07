@@ -44,51 +44,62 @@ public class CardCallHandler {
     ProfileDAO profileDAO;
 
 
-
-
-    public Response outCardCallListHandler() {
-        OutCardCallResponse outCardCallRespons = new OutCardCallResponse();
-        List<OutCardCallDetails> outCardCallDetails = new ArrayList<>();
-        List<CardCall> outCardCalls = cardCallDAO.findAll();
-        for(CardCall outCardCall: outCardCalls) {
-            OutCardCallDetails details = new OutCardCallDetails();
-            details.setCardCallId(outCardCall.getId());
-            details.setCreateDataTime(outCardCall.getCreateDate());
-            details.setStatus(outCardCall.getStatus().name());
+    public Response cardCallListHandler() {
+        CardCallListResponse cardCallListResponse = new CardCallListResponse();
+        List<CardCallDetails> cardCallDetails = new ArrayList<>();
+        List<CardCall> cardCalls = cardCallDAO.findAll();
+        for (CardCall cardCall : cardCalls) {
+            CardCallDetails details = new CardCallDetails();
+            details.setCardCallId(cardCall.getId());
+            details.setCreateDataTime(cardCall.getCreateDate());
+            details.setStatus(cardCall.getStatus().name());
 
 
             MedicDetails medicDetails = new MedicDetails();
-            medicDetails.setMedicId(outCardCall.getUpdateBy().getId());
-            medicDetails.setFirstName(outCardCall.getUpdateBy().getMedicUser().getFirstName());
-            medicDetails.setMiddleName(outCardCall.getUpdateBy().getMedicUser().getMiddleName());
-            medicDetails.setPosition(outCardCall.getUpdateBy().getMedicPosition().getPositionValue());
+            medicDetails.setMedicId(cardCall.getUpdateBy().getId());
+            medicDetails.setFirstName(cardCall.getUpdateBy().getMedicUser().getFirstName());
+            medicDetails.setMiddleName(cardCall.getUpdateBy().getMedicUser().getMiddleName());
+            medicDetails.setPosition(cardCall.getUpdateBy().getMedicPosition().getPositionValue());
             details.setUpdatedBy(medicDetails);
 
             BrigadeDetails brigadeDetails = new BrigadeDetails();
-            brigadeDetails.setBrigadeId(outCardCall.getBrigade().getId());
-            brigadeDetails.setBrigadeNumber(outCardCall.getBrigade().getBrigadeNumber());
-            brigadeDetails.setDepartmentId(outCardCall.getBrigade().getDepartment().getId());
+            brigadeDetails.setBrigadeId(cardCall.getBrigade().getId());
+            brigadeDetails.setBrigadeNumber(cardCall.getBrigade().getBrigadeNumber());
+            brigadeDetails.setDepartmentId(cardCall.getBrigade().getDepartment().getId());
             List<Long> medics = new ArrayList<>();
-            for (Medic medic: outCardCall.getBrigade().getMedics()) {
+            for (Medic medic : cardCall.getBrigade().getMedics()) {
                 medics.add(medic.getId());
             }
             brigadeDetails.setMedicList(medics);
             details.setBrigade(brigadeDetails);
-            details.setUpdatedDataTime(outCardCall.getUpdateDate());
+            details.setUpdatedDataTime(cardCall.getUpdateDate());
 
-            outCardCallDetails.add(details);
+
+            if (cardCall.getLookupSections() != null && !cardCall.getLookupSections().isEmpty()) {
+                List<LookupSectionDetails> sectionDetails = new ArrayList<>();
+                for (LookupSection section : cardCall.getLookupSections()) {
+                    LookupSectionDetails lookupSectionDetails = new LookupSectionDetails();
+                    if (section.getAnswer() != null) {
+                        lookupSectionDetails.setAnswerId(section.getAnswer());
+                    }
+                    lookupSectionDetails.setAnswerValue(section.getAnswerValue());
+                    lookupSectionDetails.setQuestionId(section.getQuestion());
+                    sectionDetails.add(lookupSectionDetails);
+                }
+                details.setSections(sectionDetails);
+            }
+            cardCallDetails.add(details);
         }
-        outCardCallRespons.setCardCalls(outCardCallDetails);
-        return Response.ok(outCardCallRespons).build();
+        cardCallListResponse.setCardCalls(cardCallDetails);
+        return Response.ok(cardCallListResponse).build();
     }
-
 
 
     public Response cardCallProfileListHandler() {
         ProfileResponse profileRespons = new ProfileResponse();
         List<ProfileDetails> profileDetails = new ArrayList<>();
         List<BrigadeProfile> profiles = profileDAO.findAll();
-        for(BrigadeProfile profile: profiles) {
+        for (BrigadeProfile profile : profiles) {
             ProfileDetails details = new ProfileDetails();
             details.setProfileId(profile.getId());
             details.setTranscript(profile.getTranscript());
@@ -104,7 +115,7 @@ public class CardCallHandler {
         DepartmentsResponse departmentsResponse = new DepartmentsResponse();
         List<DepartmentDetails> departmentsDetails = new ArrayList<>();
         List<Department> departments = departmentDAO.findAll();
-        for(Department department: departments) {
+        for (Department department : departments) {
             DepartmentDetails details = new DepartmentDetails();
             details.setDepartmentId(department.getId());
             details.setDepartmentName(department.getDepartmentName());
@@ -134,7 +145,7 @@ public class CardCallHandler {
         brigade.setBrigadeProfile(new BrigadeProfile(brigadeDetails.getProfileId()));
         brigade.setDepartment(new Department(brigadeDetails.getDepartmentId()));
         Set<Medic> medics = new HashSet<>();
-        for (Long medicId: brigadeDetails.getMedicList()) {
+        for (Long medicId : brigadeDetails.getMedicList()) {
             medics.add(new Medic(medicId));
         }
         brigade.setMedics(medics);
@@ -144,15 +155,15 @@ public class CardCallHandler {
     private Set<LookupSection> converterLookupSection(List<LookupSectionDetails> lookupSectionDetails, CardCall cardCall) {
         Set<LookupSection> lookupSections = new HashSet<>();
 
-        for (LookupSectionDetails details: lookupSectionDetails) {
+        for (LookupSectionDetails details : lookupSectionDetails) {
             LookupSection lookupSection = new LookupSection();
             lookupSection.setId(details.getLookupSectionId());
             if (details.getAnswerId() != null) {
-                lookupSection.setAnswer(new Answer(details.getAnswerId()));
+                lookupSection.setAnswer(details.getAnswerId());
             }
-            lookupSection.setQuestion(new Question(details.getQuestionId()));
+            lookupSection.setQuestion(details.getQuestionId());
             lookupSection.setAnswerValue(details.getAnswerValue());
-            lookupSection.setCardCall(cardCall);
+            lookupSection.setCardCallSection(cardCall);
 
             lookupSections.add(lookupSection);
         }
@@ -160,13 +171,11 @@ public class CardCallHandler {
     }
 
 
-
-
     public Response sectionListHandler() {
         FormSectionsResponse sectionsResponse = new FormSectionsResponse();
         List<SectionDetails> sectionDetailList = new ArrayList<>();
         List<Section> sectionList = sectionDAO.findAll();
-        for (Section section: sectionList) {
+        for (Section section : sectionList) {
             SectionDetails sectionDetails = new SectionDetails();
             sectionDetails.setSectionId(section.getId());
             sectionDetails.setSectionDescription(section.getSectionDescription());

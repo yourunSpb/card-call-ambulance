@@ -85,18 +85,17 @@ public class CardCallApiImpl implements CardCallApi {
     }
 
     @GET
-    @Path("/outCardCall")
-    @ApiOperation(value = "Get all the OutCardCall at the substation", notes = "This method returns list of CardCalls", response = OutCardCallResponse.class)
+    @Path("/List")
+    // CardCallListResponse
+    @ApiOperation(value = "Get all the Card Call", notes = "This method returns list of Card Call List", response = CardCallListResponse.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Response with actual data"),
-
             @ApiResponse(code = 400, message = "Bad request"),
-
             @ApiResponse(code = 404, message = "Not Found") })
     @Override
     @Produces(MediaType.APPLICATION_JSON)
-    public Response cardCallOutCardCallGet() throws NotFoundException {
-        return cardCallHandler.outCardCallListHandler();
+    public Response cardCallListGet() throws NotFoundException {
+        return cardCallHandler.cardCallListHandler();
     }
 }
 

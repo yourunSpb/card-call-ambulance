@@ -5,17 +5,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import ru.ccamgmt.domain.entity.CardCall;
 import ru.ccamgmt.domain.entity.ServiceCoreConstants;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -34,17 +24,17 @@ public class LookupSection implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "LOOKUP_ID_SEQ")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "QUESTION_ID", nullable = false)
-    private Question question;
+//    @ManyToOne(fetch = FetchType.EAGER)
+    @Column(name = "QUESTION_ID", nullable = false)
+    private Long question;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ANSWER_ID")
-    private Answer answer;
+//    @ManyToOne(fetch = FetchType.EAGER)
+    @Column(name = "ANSWER_ID")
+    private Long answer;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "CARD_CALL_ID", nullable = false)
-    private CardCall cardCall;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "CARD_CALL_ID",referencedColumnName = "CARD_CALL_ID", nullable = false)
+    private CardCall cardCallSection;
 
     @Column(name = "ANSWER_VALUE", length = ServiceCoreConstants.LOOKUP_ANSWER_VALUE_LENGTH)
     private String answerValue;
@@ -57,28 +47,28 @@ public class LookupSection implements Serializable {
         this.id = id;
     }
 
-    public Question getQuestion() {
+    public Long getQuestion() {
         return question;
     }
 
-    public void setQuestion(Question question) {
+    public void setQuestion(Long question) {
         this.question = question;
     }
 
-    public Answer getAnswer() {
+    public Long getAnswer() {
         return answer;
     }
 
-    public void setAnswer(Answer answer) {
+    public void setAnswer(Long answer) {
         this.answer = answer;
     }
 
-    public CardCall getCardCall() {
-        return cardCall;
+    public CardCall getCardCallSection() {
+        return cardCallSection;
     }
 
-    public void setCardCall(CardCall cardCall) {
-        this.cardCall = cardCall;
+    public void setCardCallSection(CardCall cardCallSection) {
+        this.cardCallSection = cardCallSection;
     }
 
     public String getAnswerValue() {
@@ -103,7 +93,7 @@ public class LookupSection implements Serializable {
 
         return new EqualsBuilder()
                 .append(id, lookupSection.id)
-                .append(cardCall, lookupSection.cardCall)
+                .append(cardCallSection, lookupSection.cardCallSection)
                 .append(question, lookupSection.question)
                 .append(answer, lookupSection.answer)
                 .append(answerValue, lookupSection.answerValue)
@@ -114,7 +104,7 @@ public class LookupSection implements Serializable {
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
                 .append(id)
-                .append(cardCall)
+                .append(cardCallSection)
                 .append(question)
                 .append(answer)
                 .append(answerValue)
@@ -125,7 +115,7 @@ public class LookupSection implements Serializable {
     public String toString() {
         return "LookupSection {" +
                 "id=" + id +
-                ", cardCall'" + cardCall + '\'' +
+                ", cardCallSection'" + cardCallSection + '\'' +
                 ", question'" + question + '\'' +
                 ", answer'" + answer + '\'' +
                 ", answerValue='" + answerValue + '\'' +

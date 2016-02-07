@@ -105,10 +105,33 @@
                 <scope>provided</scope>
             </dependency>
             <!-- Hibernate -->
+            <!--<dependency>-->
+                <!--<groupId>org.javassist</groupId>-->
+                <!--<artifactId>javassist</artifactId>-->
+                <!--<version>3.18.1-GA</version>-->
+                <!--&lt;!&ndash;<scope>provided</scope>&ndash;&gt;-->
+            <!--</dependency>-->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.version}</version>
+                <!--<exclusions>-->
+                    <!--<exclusion>-->
+                        <!--<groupId>org.javassist</groupId>-->
+                        <!--<artifactId>javassist</artifactId>-->
+                    <!--</exclusion>-->
+                <!--</exclusions>-->
+            </dependency>
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-entitymanager</artifactId>
                 <version>${hibernate.version}</version>
+                <!--<exclusions>-->
+                    <!--<exclusion>-->
+                        <!--<groupId>org.javassist</groupId>-->
+                        <!--<artifactId>javassist</artifactId>-->
+                    <!--</exclusion>-->
+                <!--</exclusions>-->
             </dependency>
             <!-- Utils -->
             <dependency>
@@ -130,6 +153,12 @@
             <artifactId>commons-collections</artifactId>
             <version>${commons-collections.version}</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.javassist</groupId>-->
+            <!--<artifactId>javassist</artifactId>-->
+            <!--<version>3.18.1-GA</version>-->
+            <!--&lt;!&ndash;<scope>provided</scope>&ndash;&gt;-->
+        <!--</dependency>-->
 
         <!-- logging facility -->
         <dependency>
@@ -196,58 +225,58 @@
             </plugin>
             <!-- Cobertura plugin -->
             <!--<plugin>-->
-                <!--<groupId>org.codehaus.mojo</groupId>-->
-                <!--<artifactId>cobertura-maven-plugin</artifactId>-->
-                <!--<version>${cobertura.version}</version>-->
-                <!--<configuration>-->
-                    <!--<check>-->
-                        <!--<branchRate>0</branchRate>-->
-                        <!--<lineRate>0</lineRate>-->
-                        <!--<haltOnFailure>false</haltOnFailure>-->
-                        <!--<totalBranchRate>0</totalBranchRate>-->
-                        <!--<totalLineRate>0</totalLineRate>-->
-                        <!--<packageLineRate>0</packageLineRate>-->
-                        <!--<packageBranchRate>0</packageBranchRate>-->
-                    <!--</check>-->
-                    <!--<formats>-->
-                        <!--<format>xml</format>-->
-                        <!--<format>html</format>-->
-                    <!--</formats>-->
-                    <!--<instrumentation>-->
-                        <!--<excludes>-->
-                            <!--<exclude>**/schema/**/*.class</exclude>-->
-                            <!--<exclude>**/wsdl/**/*.class</exclude>-->
-                            <!--<exclude>**/gto/ibit/**/*.class</exclude>-->
-                        <!--</excludes>-->
-                    <!--</instrumentation>-->
-                <!--</configuration>-->
+            <!--<groupId>org.codehaus.mojo</groupId>-->
+            <!--<artifactId>cobertura-maven-plugin</artifactId>-->
+            <!--<version>${cobertura.version}</version>-->
+            <!--<configuration>-->
+            <!--<check>-->
+            <!--<branchRate>0</branchRate>-->
+            <!--<lineRate>0</lineRate>-->
+            <!--<haltOnFailure>false</haltOnFailure>-->
+            <!--<totalBranchRate>0</totalBranchRate>-->
+            <!--<totalLineRate>0</totalLineRate>-->
+            <!--<packageLineRate>0</packageLineRate>-->
+            <!--<packageBranchRate>0</packageBranchRate>-->
+            <!--</check>-->
+            <!--<formats>-->
+            <!--<format>xml</format>-->
+            <!--<format>html</format>-->
+            <!--</formats>-->
+            <!--<instrumentation>-->
+            <!--<excludes>-->
+            <!--<exclude>**/schema/**/*.class</exclude>-->
+            <!--<exclude>**/wsdl/**/*.class</exclude>-->
+            <!--<exclude>**/gto/ibit/**/*.class</exclude>-->
+            <!--</excludes>-->
+            <!--</instrumentation>-->
+            <!--</configuration>-->
             <!--</plugin>-->
         </plugins>
     </build>
 
     <!--<reporting>-->
-        <!--<plugins>-->
-            <!--<plugin>-->
-                <!--<groupId>org.codehaus.mojo</groupId>-->
-                <!--<artifactId>cobertura-maven-plugin</artifactId>-->
-                <!--<version>${cobertura.version}</version>-->
-                <!--<inherited>true</inherited>-->
-                <!--<configuration>-->
-                    <!--<check>-->
-                        <!--<haltOnFailure>false</haltOnFailure>-->
-                        <!--<branchRate>0</branchRate>-->
-                        <!--<lineRate>0</lineRate>-->
-                        <!--<totalBranchRate>0</totalBranchRate>-->
-                        <!--<totalLineRate>0</totalLineRate>-->
-                        <!--<packageLineRate>0</packageLineRate>-->
-                        <!--<packageBranchRate>0</packageBranchRate>-->
-                    <!--</check>-->
-                    <!--<formats>-->
-                        <!--<format>html</format>-->
-                        <!--<format>xml</format>-->
-                    <!--</formats>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-        <!--</plugins>-->
+    <!--<plugins>-->
+    <!--<plugin>-->
+    <!--<groupId>org.codehaus.mojo</groupId>-->
+    <!--<artifactId>cobertura-maven-plugin</artifactId>-->
+    <!--<version>${cobertura.version}</version>-->
+    <!--<inherited>true</inherited>-->
+    <!--<configuration>-->
+    <!--<check>-->
+    <!--<haltOnFailure>false</haltOnFailure>-->
+    <!--<branchRate>0</branchRate>-->
+    <!--<lineRate>0</lineRate>-->
+    <!--<totalBranchRate>0</totalBranchRate>-->
+    <!--<totalLineRate>0</totalLineRate>-->
+    <!--<packageLineRate>0</packageLineRate>-->
+    <!--<packageBranchRate>0</packageBranchRate>-->
+    <!--</check>-->
+    <!--<formats>-->
+    <!--<format>html</format>-->
+    <!--<format>xml</format>-->
+    <!--</formats>-->
+    <!--</configuration>-->
+    <!--</plugin>-->
+    <!--</plugins>-->
     <!--</reporting>-->
 </project>

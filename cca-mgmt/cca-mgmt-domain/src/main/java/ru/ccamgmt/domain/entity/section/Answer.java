@@ -34,9 +34,6 @@ public class Answer implements Serializable {
     @Column(name = "ANSWER_VALUE", length = ServiceCoreConstants.ANSWER_VALUE_LENGTH)
     private String answerValue;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "answer")
-    private Set<LookupSection> lookupSections;
-
     public Answer() {
     }
 
@@ -66,14 +63,6 @@ public class Answer implements Serializable {
 
     public void setAnswerValue(String answerValue) {
         this.answerValue = answerValue;
-    }
-
-    public Set<LookupSection> getLookupSections() {
-        return lookupSections;
-    }
-
-    public void setLookupSections(Set<LookupSection> lookupSections) {
-        this.lookupSections = lookupSections;
     }
 
     @Override

@@ -307,14 +307,14 @@ alter table LOOKUP_SECTION
    add constraint FK_LOOKUP_CARD_CALL foreign key (CARD_CALL_ID)
       references CARD_CALL (CARD_CALL_ID);
 
+--
+--alter table LOOKUP_SECTION
+--   add constraint FK_LOOKUP_QUESTION foreign key (QUESTION_ID)
+--      references QUESTION (QUESTION_ID);
 
-alter table LOOKUP_SECTION
-   add constraint FK_LOOKUP_QUESTION foreign key (QUESTION_ID)
-      references QUESTION (QUESTION_ID);
-
-alter table LOOKUP_SECTION
-   add constraint FK_LOOKUP_S_REFERENCE_ANSWER foreign key (ANSWER_ID)
-      references ANSWER (ANSWER_ID);
+--alter table LOOKUP_SECTION
+--   add constraint FK_LOOKUP_S_REFERENCE_ANSWER foreign key (ANSWER_ID)
+--      references ANSWER (ANSWER_ID);
 
 alter table MEDIC
    add constraint FK_MEDIC_POSITION foreign key (POSITION_ID)

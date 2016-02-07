@@ -21,7 +21,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 /**
- * Created by Денис on 23.12.2015.
+ * Created by Р”РµРЅРёСЃ on 23.12.2015.
  */
 @RunWith(MockitoJUnitRunner.class)
 public class UserHandlerTest {
@@ -42,7 +42,7 @@ public class UserHandlerTest {
     @Test
     public void testMedicListHandler() {
         MedicPosition position = new MedicPosition();
-        position.setPositionValue("главврач");
+        position.setPositionValue("РіР»Р°РІРІСЂР°С‡");
 
         MedicUser user = new MedicUser();
         user.setMiddleName("Stolyarenko");
@@ -58,7 +58,7 @@ public class UserHandlerTest {
 
         when(medicDAO.findAll()).thenReturn(medics);
 
-        Response response = userHandler.medicListHandler();
+        Response response = userHandler.medicListHandle();
         assertEquals(200, response.getStatus());
         assertTrue(response.getEntity() instanceof MedicsResponse);
         MedicsResponse medicsResponse = (MedicsResponse) response.getEntity();
@@ -66,7 +66,7 @@ public class UserHandlerTest {
         assertEquals("Yuriy", medicsResponse.getMedics().get(0).getFirstName());
         assertEquals("Stolyarenko", medicsResponse.getMedics().get(0).getMiddleName());
         assertEquals((Long)5L, medicsResponse.getMedics().get(0).getMedicId());
-        assertEquals("главврач", medicsResponse.getMedics().get(0).getPosition());
+        assertEquals("РіР»Р°РІРІСЂР°С‡", medicsResponse.getMedics().get(0).getPosition());
 
     }
 

@@ -130,15 +130,15 @@
         }
       }
     },
-    "/cardCall/outCardCall": {
+    "/cardCall/List": {
       "get": {
-        "summary": "Get all the Profiles at the substation",
-        "description": "This method returns list of Profiles",
+        "summary": "Get all the Card Call",
+        "description": "This method returns list of Card Call List",
         "responses": {
           "200": {
             "description": "Response with actual data",
             "schema": {
-              "$ref": "#/definitions/ProfileResponse"
+              "$ref": "#/definitions/CardCallListResponse"
             }
           },
           "400": {
@@ -280,11 +280,6 @@
           "type": "integer",
           "format": "int64",
           "description": "If this field is present then update the lookup section with the current ID"
-        },
-        "cardCallId": {
-          "type": "integer",
-          "format": "int64",
-          "description": "card call id in system"
         },
         "questionId": {
           "type": "integer",
@@ -518,27 +513,27 @@
         }
       }
     },
-    "outCardCallResponse": {
+    "CardCallListResponse": {
       "type": "object",
       "properties": {
-        "CardCalls": {
+        "cardCalls": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/OutCardCallDetails"
+            "$ref": "#/definitions/CardCallDetails"
           },
           "description": "CardCall details"
         }
       }
     },
-    "OutCardCallDetails": {
+    "CardCallDetails": {
       "type": "object",
       "properties": {
-        "CardCallId": {
+        "cardCallId": {
           "type": "integer",
           "format": "int64",
           "description": "card call id in system"
         },
-        "CreateDataTime": {
+        "createDataTime": {
           "type": "string",
           "format": "date",
           "description": "Data Time"
@@ -564,6 +559,13 @@
 
           "$ref": "#/definitions/BrigadeDetails",
           "description": "brigade"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LookupSectionDetails"
+          },
+          "description": "lookup section"
         }
       }
     },

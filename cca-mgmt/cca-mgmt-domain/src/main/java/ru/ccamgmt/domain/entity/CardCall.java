@@ -52,7 +52,7 @@ public class CardCall implements Serializable {
     @JoinColumn(name = "BRIGADE_ID", referencedColumnName = "BRIGADE_ID")
     private Brigade brigade;
 
-    @OneToMany(mappedBy = "cardCall", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "cardCallSection", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<LookupSection> lookupSections;
 
 
