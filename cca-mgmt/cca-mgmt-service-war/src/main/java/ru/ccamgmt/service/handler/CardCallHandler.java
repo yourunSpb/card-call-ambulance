@@ -19,6 +19,8 @@ import ru.ccamgmt.domain.entity.section.Section;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.core.Response;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -45,49 +47,49 @@ public class CardCallHandler {
 
 
     public Response cardCallListHandler() {
+        DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
         CardCallListResponse cardCallListResponse = new CardCallListResponse();
         List<CardCallDetails> cardCallDetails = new ArrayList<>();
         List<CardCall> cardCalls = cardCallDAO.findAll();
         for (CardCall cardCall : cardCalls) {
             CardCallDetails details = new CardCallDetails();
             details.setCardCallId(cardCall.getId());
-            details.setCreateDataTime(cardCall.getCreateDate());
+            details.setCreateDateTime(dateFormat.format(cardCall.getCreateDate()));
             details.setStatus(cardCall.getStatus().name());
 
+            String updateBy = cardCall.getUpdateBy().getMedicPosition().getPositionValue() + " "
+                    + " " + cardCall.getUpdateBy().getMedicUser().getFirstName()
+                    + " " + cardCall.getUpdateBy().getMedicUser().getMiddleName();
+            details.setUpdatedBy(updateBy);
 
-            MedicDetails medicDetails = new MedicDetails();
-            medicDetails.setMedicId(cardCall.getUpdateBy().getId());
-            medicDetails.setFirstName(cardCall.getUpdateBy().getMedicUser().getFirstName());
-            medicDetails.setMiddleName(cardCall.getUpdateBy().getMedicUser().getMiddleName());
-            medicDetails.setPosition(cardCall.getUpdateBy().getMedicPosition().getPositionValue());
-            details.setUpdatedBy(medicDetails);
-
-            BrigadeDetails brigadeDetails = new BrigadeDetails();
-            brigadeDetails.setBrigadeId(cardCall.getBrigade().getId());
-            brigadeDetails.setBrigadeNumber(cardCall.getBrigade().getBrigadeNumber());
-            brigadeDetails.setDepartmentId(cardCall.getBrigade().getDepartment().getId());
-            List<Long> medics = new ArrayList<>();
-            for (Medic medic : cardCall.getBrigade().getMedics()) {
-                medics.add(medic.getId());
-            }
-            brigadeDetails.setMedicList(medics);
-            details.setBrigade(brigadeDetails);
+//            BrigadeDetails brigadeDetails = new BrigadeDetails();
+//            brigadeDetails.setBrigadeId(cardCall.getBrigade().getId());
+//            brigadeDetails.setBrigadeNumber(cardCall.getBrigade().getBrigadeNumber());
+//            brigadeDetails.setDepartmentId(cardCall.getBrigade().getDepartment().getId());
+//            List<Long> medics = new ArrayList<>();
+//            for (Medic medic : cardCall.getBrigade().getMedics()) {
+//                medics.add(medic.getId());
+//            }
+//            brigadeDetails.setMedicList(medics);
+            details.setBrigadeNumber(cardCall.getBrigade().getBrigadeNumber());
+            details.setProfile(cardCall.getBrigade().getBrigadeProfile().getTranscript());
+            details.setDepartmentName(cardCall.getBrigade().getDepartment().getDepartmentName());
             details.setUpdatedDataTime(cardCall.getUpdateDate());
 
 
-            if (cardCall.getLookupSections() != null && !cardCall.getLookupSections().isEmpty()) {
-                List<LookupSectionDetails> sectionDetails = new ArrayList<>();
-                for (LookupSection section : cardCall.getLookupSections()) {
-                    LookupSectionDetails lookupSectionDetails = new LookupSectionDetails();
-                    if (section.getAnswer() != null) {
-                        lookupSectionDetails.setAnswerId(section.getAnswer());
-                    }
-                    lookupSectionDetails.setAnswerValue(section.getAnswerValue());
-                    lookupSectionDetails.setQuestionId(section.getQuestion());
-                    sectionDetails.add(lookupSectionDetails);
-                }
-                details.setSections(sectionDetails);
-            }
+//            if (cardCall.getLookupSections() != null && !cardCall.getLookupSections().isEmpty()) {
+//                List<LookupSectionDetails> sectionDetails = new ArrayList<>();
+//                for (LookupSection section : cardCall.getLookupSections()) {
+//                    LookupSectionDetails lookupSectionDetails = new LookupSectionDetails();
+//                    if (section.getAnswer() != null) {
+//                        lookupSectionDetails.setAnswerId(section.getAnswer());
+//                    }
+//                    lookupSectionDetails.setAnswerValue(section.getAnswerValue());
+//                    lookupSectionDetails.setQuestionId(section.getQuestion());
+//                    sectionDetails.add(lookupSectionDetails);
+//                }
+//                details.setSections(sectionDetails);
+//            }
             cardCallDetails.add(details);
         }
         cardCallListResponse.setCardCalls(cardCallDetails);

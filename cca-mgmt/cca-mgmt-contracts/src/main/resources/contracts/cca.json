@@ -533,9 +533,8 @@
           "format": "int64",
           "description": "card call id in system"
         },
-        "createDataTime": {
+        "createDateTime": {
           "type": "string",
-          "format": "date",
           "description": "Data Time"
         },
         "status": {
@@ -543,7 +542,7 @@
           "description": "status"
         },
         "updatedBy": {
-          "$ref": "#/definitions/MedicDetails",
+          "type": "string",
           "description": "updatedBy"
         },
         "updatedDataTime": {
@@ -551,21 +550,18 @@
           "format": "date",
           "description": "updatedDateTime"
         },
-        "cardCallContent": {
+        "brigadeNumber": {
+          "type": "integer",
+          "format": "int64",
+          "description": "brigade number"
+        },
+        "departmentName": {
           "type": "string",
-          "description": "Content"
+          "description": "department name"
         },
-        "brigade": {
-
-          "$ref": "#/definitions/BrigadeDetails",
-          "description": "brigade"
-        },
-        "sections": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LookupSectionDetails"
-          },
-          "description": "lookup section"
+        "profile": {
+          "type": "string",
+          "description": "profile name"
         }
       }
     },
