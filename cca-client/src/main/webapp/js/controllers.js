@@ -6,7 +6,7 @@ var ccaClientControllers = angular.module('ccaClientControllers', []);
 
 
 ccaClientControllers.controller('CardCallListCtrl', ['$scope', '$location', 'CardCallList',
-  function($scope, $location, CardCallList) {
+  function ($scope, $location, CardCallList) {
       CardCallList.getCardCallList(function(response) {
         $scope.cardCalls = response.cardCalls;
 //        $scope.orderProp = 'cardCallId';
