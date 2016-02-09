@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         xmlns:j2ee="http://java.sun.com/xml/ns/j2ee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="CCAManagement-Service">
+
+    <servlet>
+        <servlet-name>RestServlet</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <param-value>ru.ccamgmt.service;ru.ccamgmt.mapper;io.swagger.jaxrs.json;io.swagger.jaxrs.listing;io.swagger.api</param-value>
+        </init-param>
+        <init-param>
+            <param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
+            <param-value>com.sun.jersey.api.container.filter.PostReplaceFilter</param-value>
+        </init-param>
+        <init-param>
+            <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RestServlet</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DefaultJaxrsConfig</servlet-name>
+        <servlet-class>io.swagger.jaxrs.config.DefaultJaxrsConfig</servlet-class>
+        <init-param>
+            <param-name>api.version</param-name>
+            <param-value>1.0.0</param-value>
+        </init-param>
+        <init-param>
+            <param-name>swagger.api.title</param-name>
+            <param-value>CCA Manager</param-value>
+        </init-param>
+        <init-param>
+            <param-name>swagger.api.basepath</param-name>
+            <param-value>http://localhost:7001/ccaMgmt</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DefaultJaxrsConfig</servlet-name>
+        <url-pattern>/api-config</url-pattern>
+    </servlet-mapping>
+
+    <!--<filter>-->
+        <!--<filter-name>CORSFilter</filter-name>-->
+        <!--<filter-class>ru.ccamgmt.service.util.CORSFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>CORSFilter</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
+    <!--<filter>-->
+        <!--<filter-name>LogFilter</filter-name>-->
+        <!--<filter-class>ru.ccamgmt.service.util.LogFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>LogFilter</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
+
+    <!-- security section -->
+    <!-- login-config method definition (environment-related) -->
+    <!--<login-config>-->
+        <!--<auth-method>${auth.method}</auth-method>-->
+        <!--<realm-name>${auth.realm}</realm-name>-->
+    <!--</login-config>-->
+
+    <!-- security constraints -->
+    <!--<security-constraint>-->
+        <!--<web-resource-collection>-->
+            <!--<web-resource-name>Access to service</web-resource-name>-->
+            <!--<url-pattern>/*</url-pattern>-->
+        <!--</web-resource-collection>-->
+        <!--<auth-constraint>-->
+            <!--<role-name>${auth.role}</role-name>-->
+        <!--</auth-constraint>-->
+    <!--</security-constraint>-->
+
+    <!-- pull off contracts and Swagger-UI from security -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>JSON_contract</web-resource-name>
+            <url-pattern>/swagger.json</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>YAML_contract</web-resource-name>
+            <url-pattern>/swagger.yaml</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+
+</web-app>
