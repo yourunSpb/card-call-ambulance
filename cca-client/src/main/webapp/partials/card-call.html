@@ -39,9 +39,9 @@
     <div id="mainView">
         <h3>{{currentSection.sectionDescription}}</h3>
 
-        <div  ng-repeat="data in currentSection.questions | orderBy:'+questionOrder'">
+        <div  id="style" ng-repeat="data in currentSection.questions | orderBy:'+questionOrder'">
 			
-            <div id="row3" ng-if="data.answerType == 'SELECT_BOX' ">
+            <div id="style" ng-if="data.answerType == 'SELECT_BOX' ">
 			
                 <label for="{{data.questionId}}">{{data.questionText}}</label>
                 <select id="{{data.questionId}}" ng-model="populates[$index].answerId" ng-change="updateAnswer($index, data.questionId)">
@@ -52,28 +52,28 @@
 			
 		
 			
-            <div  id="row2" ng-if="data.answerType == 'TEXT_BOX' ">
+            <div  id="style" ng-if="data.answerType == 'TEXT_BOX' ">
 			
                 <label>{{data.questionText}}<input type="text" ng-model="populates[$index].answerValue"
                                                    ng-change="updateAnswer($index, data.questionId)"></label>  
 												
 												   
-            </div>
+            </div><div style="clear: both;"></div>
 			
-            <div  id="row4" ng-if="data.answerType == 'TEXT_TIME_BOX' ">
+            <div  id="style" ng-if="data.answerType == 'TEXT_TIME_BOX' ">
                 <label>{{data.questionText}}<input type="time" placeholder="HH:mm" ng-model="populates[$index].answerValue"
                                                    ng-change="updateAnswer($index, data.questionId)"></label>
 												  
             </div>
 			
 		
-            <div id="row5" ng-if="data.answerType == 'TEXT_NUMBER_BOX' ">
+            <div id="style" ng-if="data.answerType == 'TEXT_NUMBER_BOX' ">
                 <label>{{data.questionText}}<input type="number" ng-model="populates[$index].answerValue"
                                                    ng-change="updateAnswer($index, data.questionId)"></label>
 											
             </div>
 			
-            <div  id="row6" ng-if="data.answerType == 'TEXT_DATE_BOX' ">
+            <div  id="style" ng-if="data.answerType == 'TEXT_DATE_BOX' ">
                 <label>{{data.questionText}}<input type="date" ng-model="populates[$index].answerValue"
                                                    ng-change="updateAnswer($index, data.questionId)"></label>
 												
@@ -83,6 +83,14 @@
     </div>
 
 </div>
+<div style="clear: both;"></div>
+<!--div style="width: 100%; float: left;">
+    <div style="float: left; width: 25%; margin: 10px; padding: 10px;">Блок 1
+	
+	</div>
+    <div style="float: left; width: 25%; margin: 10px; padding: 10px;">Блок 2</div>
+    <div style="float: left; width: 25%; margin: 10px; padding: 10px;">Блок 3</div>
+    <div style="float: left; width: 25%; margin: 10px; padding: 10px;">Блок 4</div></div><div style="clear: both;"></div>
 <!--<pre>{{cardCall | json}}</pre>-->
 
 

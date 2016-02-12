@@ -1,9 +1,10 @@
-<div class="container-fluid">
-    <div class="row">
+<div class="container-fluid" >
+    <div class="row" >
         <div class="col-md-2">
             <!--Sidebar content-->
 
-            Search: <input ng-model="query">
+            Search: <input size="40" ng-model="query">
+			<br></br>
             <!--Sort by:-->
             <!--<select ng-model="orderProp">-->
                 <!--<option value="cardCallId">card call id</option>-->
@@ -13,6 +14,7 @@
             <!--</select>-->
 
         </div>
+		
         <div class="col-md-10">
             <!--<ul class="cardCalls">-->
                 <!--<li ng-repeat="cardCall in cardCalls | filter:query | orderBy:orderProp"-->
@@ -25,31 +27,31 @@
             <table id="t01">
                 <tr>
                     <th>
-                        <button ng-click="order('cardCallId')">Card Call Id</button>
+                        <button style="margin: 10px; padding: 17px 24px 11px; width:-moz-max-content" ng-click="order('cardCallId')">Card Call Id</button>
                         <span class="sortorder" ng-show="predicate === 'cardCallId'" ng-class="{reverse:reverse}"></span>
                     </th>
                     <th>
-                        <button ng-click="order('createDateTime')">Create Date Time</button>
+                        <button style="margin: 10px; padding: 17px 24px 11px; width:-moz-max-content" ng-click="order('createDateTime')">Create Date Time</button>
                         <span class="sortorder" ng-show="predicate === 'createDateTime'" ng-class="{reverse:reverse}"></span>
                     </th>
                     <th>
-                        <button ng-click="order('status')">Status</button>
+                        <button style="margin: 10px; padding: 17px 24px 11px; width:-moz-max-content" ng-click="order('status')">Status</button>
                         <span class="sortorder" ng-show="predicate === 'status'" ng-class="{reverse:reverse}"></span>
                     </th>
                     <th>
-                        <button ng-click="order('updatedBy')">Updated By</button>
+                        <button style="margin: 10px; padding: 17px 24px 11px; width:-moz-max-content" ng-click="order('updatedBy')">Updated By</button>
                         <span class="sortorder" ng-show="predicate === 'updatedBy'" ng-class="{reverse:reverse}"></span>
                     </th>
                     <th>
-                        <button ng-click="order('brigadeNumber')">Brigade Number</button>
+                        <button style="margin: 10px; padding: 17px 24px 11px; width:-moz-max-content" ng-click="order('brigadeNumber')">Brigade Number</button>
                         <span class="sortorder" ng-show="predicate === 'brigadeNumber'" ng-class="{reverse:reverse}"></span>
                     </th>
                     <th>
-                        <button ng-click="order('departmentName')">Department Name</button>
+                        <button style="margin: 10px; padding: 17px 24px 11px; width:-moz-max-content" ng-click="order('departmentName')">Department Name</button>
                         <span class="sortorder" ng-show="predicate === 'departmentName'" ng-class="{reverse:reverse}"></span>
                     </th>
                     <th>
-                        <button ng-click="order('profile')">Profile</button>
+                        <button style="margin: 10px; padding: 17px 24px 11px; width:-moz-max-content" ng-click="order('profile')">Profile</button>
                         <span class="sortorder" ng-show="predicate === 'profile'" ng-class="{reverse:reverse}"></span>
                     </th>
                 </tr>
@@ -87,6 +89,7 @@
         </div>
     </div>
 </div>
-<button  ng-click="go('/card-calls/create-card-call')" >Create Card Call</button>
+<br></br>
+<button  style="margin: 17px; padding: 10px 11px 9px; border-radius: 22px;" ng-click="go('/card-calls/create-card-call')" >Create Card Call</button>
 <!--<a class="button" href="#/card-calls/create-card-call">Create Card Call</a>-->
 <!--<button ng-click="go('/home')"></button>-->
