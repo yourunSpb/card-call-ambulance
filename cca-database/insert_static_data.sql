@@ -471,15 +471,16 @@ INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANS
 INSERT INTO SECTION(SECTION_ID, SECTION_NAME, SECTION_DESCRIPTION) VALUES (3, 'Жалобы', 'Жалобы Анамнез');
 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (43, 3, 43, 'Жалобы', 'TEXT_BOX');   
+  VALUES (43, 3, 1, 'Жалобы', 'TEXT_BOX');   
 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (44, 3, 44, 'Анамнез', 'TEXT_BOX');
+  VALUES (44, 3, 2, 'Анамнез', 'TEXT_BOX');
+
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (112, 3, 112, 'Эпид.Анамнез', 'TEXT_BOX');
+  VALUES (112, 3, 3, 'Эпид.Анамнез', 'TEXT_BOX');
   
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-VALUES (45, 3, 45, 'Посещение не благополучных стран и регионов за 3 года', 'SELECT_BOX'); 
+VALUES (45, 3, 4, 'Посещение не благополучных стран и регионов за 3 года', 'SELECT_BOX'); 
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 45, 'Да');
@@ -488,7 +489,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 45, 'Нет'); 
 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-VALUES (46, 3, 46, 'Информация заболевания в анамнезе', 'SELECT_BOX'); 
+VALUES (46, 3, 5, 'Информация заболевания в анамнезе', 'SELECT_BOX'); 
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 46, 'Нет');
@@ -506,7 +507,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 46, 'ВИЧ');
   
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-VALUES (47, 3, 47, 'Инъекции Оперативные вмеш-ва за последние 6 месяцев', 'SELECT_BOX'); 
+VALUES (47, 3, 6, 'Инъекции Оперативные вмеш-ва за последние 6 месяцев', 'SELECT_BOX'); 
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 47, 'Да');
@@ -516,16 +517,16 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
   
   
 -- SECTION Объективные Данные ----------------------------------------------------------------
-INSERT INTO SECTION(SECTION_ID, SECTION_NAME, SECTION_DESCRIPTION) VALUES (4, 'Пациент', 'Данные пациента'); 
+INSERT INTO SECTION(SECTION_ID, SECTION_NAME, SECTION_DESCRIPTION) VALUES (4, 'Мед. показатели', 'Данные пациента'); 
 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (48, 4, 48, 'ЭКГ до лечения', 'TEXT_BOX'); 
+  VALUES (48, 4, 1, 'ЭКГ до лечения', 'TEXT_BOX'); 
   
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (113, 4, 113, 'ЭКГ п/леч', 'TEXT_BOX'); 
+  VALUES (113, 4, 2, 'ЭКГ п/леч', 'TEXT_BOX'); 
 -------------------------------------------------------------------------------------------------  
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-VALUES (49, 4, 49, 'Общее состояние', 'SELECT_BOX'); 
+VALUES (49, 4, 3, 'Общее состояние', 'SELECT_BOX'); 
 
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 49, 'Удолитворительное');
@@ -550,7 +551,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-VALUES (50, 4, 50, 'Поведение', 'SELECT_BOX'); 
+VALUES (50, 4, 4, 'Поведение', 'SELECT_BOX'); 
 --  
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 50, 'спокойное');
@@ -567,7 +568,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (51, 4, 51, 'Сознание:', 'SELECT_BOX');
+  VALUES (51, 4, 5, 'Сознание:', 'SELECT_BOX');
 --  
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 51, 'ясное');
@@ -580,10 +581,10 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 
 -----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (52, 4,52, 'Оценка по шкале глазго', 'TEXT_NUMBER_BOX');
+  VALUES (52, 4, 6, 'Оценка по шкале глазго', 'TEXT_NUMBER_BOX');
 -- ------------------------------------------------------------------------------- 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-VALUES (53, 3, 53, 'Запах Алкоголя', 'SELECT_BOX'); 
+VALUES (53, 3, 7, 'Запах Алкоголя', 'SELECT_BOX'); 
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 53, 'Да');
@@ -592,20 +593,20 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 53, 'Нет'); 
 -----------------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (54, 4,54, 'Температура тела', 'TEXT_NUMBER_BOX');
+  VALUES (54, 4, 8, 'Температура тела', 'TEXT_NUMBER_BOX');
   
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (55, 4,55, 'ЧСС', 'TEXT_NUMBER_BOX');  
+  VALUES (55, 4, 9, 'ЧСС', 'TEXT_NUMBER_BOX');  
 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (114, 4,114, 'АД', 'TEXT_NUMBER_BOX');  
+  VALUES (114, 4, 10, 'АД', 'TEXT_NUMBER_BOX');  
 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (56, 4,56, 'АД привыч', 'TEXT_NUMBER_BOX');  
+  VALUES (56, 4, 11, 'АД привыч', 'TEXT_NUMBER_BOX');  
   
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-VALUES (57, 4, 57, 'Кожные покровы:', 'SELECT_BOX');
+VALUES (57, 4, 12, 'Кожные покровы:', 'SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 57, 'нормальные');
@@ -639,7 +640,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
    
 -- ------------------------------------------------------------------------------- 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-VALUES (58, 4, 58, 'Отеки', 'SELECT_BOX'); 
+VALUES (58, 4, 13, 'Отеки', 'SELECT_BOX'); 
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 58, 'Да');
@@ -648,7 +649,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 58, 'Нет');   
 -- ------------------------------------------------------------------------------- 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-VALUES (59, 4, 59, 'Сыпь', 'SELECT_BOX'); 
+VALUES (59, 4, 14, 'Сыпь', 'SELECT_BOX'); 
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 59, 'Да');
@@ -658,7 +659,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 
 -- ------------------------------------------------------------------------------- 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-VALUES (115, 4, 115, 'Зрачки', 'SELECT_BOX'); 
+VALUES (115, 4, 15, 'Зрачки', 'SELECT_BOX'); 
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 115, 'Нормальные');
@@ -671,7 +672,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 
 --------------------------------------------------------------------------------- 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-VALUES (116, 4, 116, 'Реакция на свет', 'SELECT_BOX'); 
+VALUES (116, 4, 16, 'Реакция на свет', 'SELECT_BOX'); 
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 116, 'Есть');
@@ -681,7 +682,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 
 -- ------------------------------------------------------------------------------- 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-VALUES (60, 4, 60, 'Нистагм', 'SELECT_BOX'); 
+VALUES (60, 4, 17, 'Нистагм', 'SELECT_BOX'); 
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 60, 'Есть');
@@ -691,7 +692,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
   
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
- VALUES (61, 4, 61, 'Мышечный тонус:', 'SELECT_BOX');
+ VALUES (61, 4, 18, 'Мышечный тонус:', 'SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
  VALUES (SEQ_ANSWER_ID.NEXTVAL, 61, 'нормальный');
@@ -707,7 +708,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
   
 -- ------------------------------------------------------------------------------- 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-VALUES (62, 4, 62, 'Очаг.невр.симпт', 'SELECT_BOX'); 
+VALUES (62, 4, 19, 'Очаг.невр.симпт', 'SELECT_BOX'); 
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 62, 'Есть');
@@ -717,7 +718,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
   
 -- ------------------------------------------------------------------------------- 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-VALUES (63, 4, 63, 'Менингиал знаки', 'SELECT_BOX'); 
+VALUES (63, 4, 20, 'Менингиал знаки', 'SELECT_BOX'); 
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 63, 'Есть');
@@ -727,7 +728,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 ----------------------------------------------------------------------------------
 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (64, 4, 64, 'Одышка:', 'SELECT_BOX');
+  VALUES (64, 4, 21, 'Одышка:', 'SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
  VALUES (SEQ_ANSWER_ID.NEXTVAL, 64, 'нет');
@@ -742,11 +743,11 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 64, 'смешенная');
   
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (67, 4,67, 'ЧДД', 'TEXT_NUMBER_BOX');
+  VALUES (67, 4, 22, 'ЧДД', 'TEXT_NUMBER_BOX');
   
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (68, 4, 68, 'Дыхание:', 'SELECT_BOX');
+  VALUES (68, 4, 23, 'Дыхание:', 'SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 68, 'ритмичное');
@@ -759,7 +760,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
  
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (69, 4, 69, 'Аускультация:', 'SELECT_BOX');
+  VALUES (69, 4, 24, 'Аускультация:', 'SELECT_BOX');
  
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
  VALUES (SEQ_ANSWER_ID.NEXTVAL, 69, 'везикулярное');
@@ -778,7 +779,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
   
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (70, 4, 70, 'Хрипы:', 'SELECT_BOX');
+  VALUES (70, 4, 25, 'Хрипы:', 'SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 70, 'Сухие D S');
@@ -791,7 +792,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (71, 4, 71, 'Перкурсия:', 'SELECT_BOX');
+  VALUES (71, 4, 26, 'Перкурсия:', 'SELECT_BOX');
  
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 71, 'Звук легочный');
@@ -804,7 +805,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
  
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (72, 4, 72, 'Границы Сердца:', 'SELECT_BOX');
+  VALUES (72, 4, 27, 'Границы Сердца:', 'SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 72, 'не изменены');
@@ -814,10 +815,10 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 
 --------------------------------------------------------------------------------------------  
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (73, 4,73, 'Пульс', 'TEXT_NUMBER_BOX');  
+  VALUES (73, 4,28, 'Пульс', 'TEXT_NUMBER_BOX');  
   
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (74, 4, 74, 'Пульс:', 'SELECT_BOX');  
+  VALUES (74, 4, 29, 'Пульс:', 'SELECT_BOX');  
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 74, 'норма наполнения');
@@ -830,7 +831,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
    
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (75, 4, 75, 'Сердцебиение:', 'SELECT_BOX');
+  VALUES (75, 4, 30, 'Сердцебиение:', 'SELECT_BOX');
  
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 75, 'ритмичное');
@@ -843,7 +844,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
  
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (76, 4, 76, 'Тоны Сердца:','SELECT_BOX');
+  VALUES (76, 4, 31, 'Тоны Сердца:','SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 76, 'ясные');
@@ -856,7 +857,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
   
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (77, 4, 77, 'Шумы:', 'SELECT_BOX');
+  VALUES (77, 4, 32, 'Шумы:', 'SELECT_BOX');
  
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 77, 'есть');
@@ -866,7 +867,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (78, 4, 78, 'Язык:', 'SELECT_BOX');
+  VALUES (78, 4, 33, 'Язык:', 'SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 78, 'Влажный');
@@ -885,7 +886,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
- VALUES (79, 4, 79, 'Ротоглотка:', 'SELECT_BOX');
+ VALUES (79, 4, 34, 'Ротоглотка:', 'SELECT_BOX');
  
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 79, 'Чистая');
@@ -901,7 +902,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
  
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (80, 4, 80, 'Живот:', 'SELECT_BOX');
+  VALUES (80, 4, 35, 'Живот:', 'SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
  VALUES (SEQ_ANSWER_ID.NEXTVAL, 80, 'Мягкий');
@@ -920,7 +921,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (81, 4, 81, 'Участие в акте Дыхания:', 'SELECT_BOX');
+  VALUES (81, 4, 36, 'Участие в акте Дыхания:', 'SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
  VALUES (SEQ_ANSWER_ID.NEXTVAL, 81, 'усаствует');
@@ -930,7 +931,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
   
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (82, 4, 82, 'Кишечные шумы:', 'SELECT_BOX');
+  VALUES (82, 4, 37, 'Кишечные шумы:', 'SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 82, 'есть');
@@ -940,7 +941,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
  
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (83, 4, 83, 'Симптомы раздроженной брюшины:', 'SELECT_BOX');
+  VALUES (83, 4, 38, 'Симптомы раздроженной брюшины:', 'SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
  VALUES (SEQ_ANSWER_ID.NEXTVAL, 83, 'есть');
@@ -950,7 +951,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (84, 4, 84, 'Печень:', 'SELECT_BOX');
+  VALUES (84, 4, 39, 'Печень:', 'SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 84, 'не пальпируется');
@@ -966,7 +967,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (85, 4, 85, 'Рвота:', 'SELECT_BOX');
+  VALUES (85, 4, 40, 'Рвота:', 'SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 85, 'есть');
@@ -976,7 +977,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
   
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (86, 4, 86, 'Нарушение Диуреза:', 'SELECT_BOX');
+  VALUES (86, 4, 41, 'Нарушение Диуреза:', 'SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 86, 'есть');
@@ -986,7 +987,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
   
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (87, 4, 87, 'Нарушение Дифекции:', 'SELECT_BOX');
+  VALUES (87, 4, 42, 'Нарушение Дифекции:', 'SELECT_BOX');
   INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
 VALUES (SEQ_ANSWER_ID.NEXTVAL, 87, 'есть');
  
@@ -995,7 +996,7 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
- VALUES (88, 4, 88, 'Травмированнные повреждения:', 'SELECT_BOX');
+ VALUES (88, 4, 43, 'Травмированнные повреждения:', 'SELECT_BOX');
   
 INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE) 
   VALUES (SEQ_ANSWER_ID.NEXTVAL, 88, 'есть');
@@ -1005,94 +1006,90 @@ INSERT INTO ANSWER(ANSWER_ID, QUESTION_ID, ANSWER_VALUE)
 
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (89, 4, 89, 'Балл шокогенности', 'TEXT_NUMBER_BOX');   
+  VALUES (89, 4, 44, 'Балл шокогенности', 'TEXT_NUMBER_BOX');   
 
 ----------------------------------------------------------------------------------  
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (90, 4, 90, 'Дополнительные данные', 'TEXT_BOX'); 
+  VALUES (90, 4, 45, 'Дополнительные данные', 'TEXT_BOX'); 
 
 -- SECTION Эффект проведенных мероприятий ----------------------------------------------------------------
 INSERT INTO SECTION(SECTION_ID, SECTION_NAME, SECTION_DESCRIPTION) VALUES (5, 'Эффект', 'Данные пациента'); 
 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
- VALUES (91, 5, 91, 'Эффективность проведенных мероприятий', 'TEXT_NUMBER_BOX');   
+ VALUES (91, 5, 1, 'Эффективность проведенных мероприятий', 'TEXT_NUMBER_BOX');   
 --  
 ----------------------------------------------------------------------------------
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (92, 5, 92, 'АД','TEXT_NUMBER_BOX'); 
+  VALUES (92, 5, 2, 'АД','TEXT_NUMBER_BOX'); 
   
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (93, 5, 93, 'ЧСС', 'TEXT_NUMBER_BOX');  
+  VALUES (93, 5, 3, 'ЧСС', 'TEXT_NUMBER_BOX');  
  
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
- VALUES (94, 5, 94, 'Пульс', 'TEXT_NUMBER_BOX'); 
+ VALUES (94, 5, 4, 'Пульс', 'TEXT_NUMBER_BOX'); 
   
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (95, 5, 95, 'ЧДД', 'TEXT_NUMBER_BOX');
+  VALUES (95, 5, 5, 'ЧДД', 'TEXT_NUMBER_BOX');
   
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (96, 5, 96, 'Температура', 'TEXT_NUMBER_BOX'); 
+  VALUES (96, 5, 6, 'Температура', 'TEXT_NUMBER_BOX'); 
 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (97, 5, 97, 'Оценка по шкале Глазго:', 'TEXT_NUMBER_BOX');
+  VALUES (97, 5, 7, 'Оценка по шкале Глазго:', 'TEXT_NUMBER_BOX');
 
 
--- SECTION Отказ от медецинского вмешательства ----------------------------------------------------------------
+---- SECTION Отказ от медецинского вмешательства ----------------------------------------------------------------
 INSERT INTO SECTION(SECTION_ID, SECTION_NAME, SECTION_DESCRIPTION) VALUES (6, 'Отказ Пациента', 'Данные пациента'); 
 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (98, 6, 98, 'Обследования:', 'Check_BOX');
+  VALUES (98, 6, 1, 'Обследования:', 'CHECK_BOX');
 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (99, 6, 99, 'Мед помощи:', 'Check_BOX');
+  VALUES (99, 6, 2, 'Мед помощи:', 'CHECK_BOX');
 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (100, 6, 100, 'Мед.эвакуации:', 'Check_BOX');
+  VALUES (100, 6, 3, 'Мед.эвакуации:', 'CHECK_BOX');
   
  INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (101, 6, 101, 'Переноски:', 'Check_BOX'); 
+  VALUES (101, 6, 4, 'Переноски:', 'CHECK_BOX'); 
 
  INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (102, 6, 102, 'Последствия отказа разъесены мне в доступной форме:', 'Text_BOX');
+  VALUES (102, 6, 5, 'Последствия отказа разъесены мне в доступной форме:', 'TEXT_BOX');
   
   
 -- SECTION Оказанная помощь ----------------------------------------------------------------
 INSERT INTO SECTION(SECTION_ID, SECTION_NAME, SECTION_DESCRIPTION) VALUES (7, 'Оказанная помощь', 'Данные');   
 
  INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (103, 7, 103, 'Диагноз:', 'Text_BOX');  
+  VALUES (103, 7, 1, 'Диагноз:', 'TEXT_BOX');  
   
  INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (104, 7, 104, 'Оказанная помощь:', 'Text_BOX');  
+  VALUES (104, 7, 2, 'Оказанная помощь:', 'TEXT_BOX');  
   
   -- SECTION Оказанная помощь ----------------------------------------------------------------
 INSERT INTO SECTION(SECTION_ID, SECTION_NAME, SECTION_DESCRIPTION) VALUES (8, 'Результаты Помощи', 'Данные'); 
   
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (105, 8, 105, 'Обследования:', 'Check_BOX');
+  VALUES (105, 8, 1, 'Обследования:', 'CHECK_BOX');
 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (106, 8, 106, 'Мед помощи:', 'Check_BOX');
+  VALUES (106, 8, 2, 'Мед помощи:', 'CHECK_BOX');
 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (107, 8, 107, 'Мед.эвакуации:', 'Check_BOX');
+  VALUES (107, 8, 3, 'Мед.эвакуации:', 'CHECK_BOX');
   
  INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (108, 8, 108, 'Переноски:', 'Check_BOX');  
+  VALUES (108, 8, 4, 'Переноски:', 'CHECK_BOX');  
   
   INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (109, 8, 109, 'Мед.эвакуации:', 'Check_BOX');
+  VALUES (109, 8, 5, 'Мед.эвакуации:', 'CHECK_BOX');
   
  INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (110, 8, 110, 'Переноски:', 'Check_BOX');
+  VALUES (110, 8, 6, 'Переноски:', 'CHECK_BOX');
 
 INSERT INTO QUESTION(QUESTION_ID, SECTION_ID, QUESTION_ORDER, QUESTION_TEXT, ANSWER_TYPE) 
-  VALUES (111, 8, 111, 'Время констатации', 'TEXT_TIME_BOX');  
+  VALUES (111, 8, 7, 'Время констатации', 'TEXT_TIME_BOX');  
   
-  
-  
-  
- 
 COMMIT;
 
 
