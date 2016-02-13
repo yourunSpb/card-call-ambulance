@@ -32,9 +32,9 @@ public enum AnswerType {
      */
     TEXT_AREA("TEXT_AREA"),
 
-    TEXT_NUMBER_BOX ("TEXT_NUMBER_BOX"),
+    TEXT_NUMBER_BOX("TEXT_NUMBER_BOX"),
 
-    TEXT_DATE_BOX ("TEXT_DATE_BOX");
+    TEXT_DATE_BOX("TEXT_DATE_BOX");
 
     private AnswerType(String label) {
         this.label = label;

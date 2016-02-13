@@ -12,10 +12,7 @@ import ru.ccamgmt.stubs.NotFoundException;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -42,6 +39,21 @@ public class CardCallApiImpl implements CardCallApi {
     public Response cardCallAddOrEditPost(@ApiParam(value = "", required = true) AddCardCallRequest body) throws NotFoundException {
         return cardCallHandler.addOrEditHandler(body);
     }
+
+    @GET
+    @Path("/cardCallById")
+    // CardCallResponse
+    @ApiOperation(value = "Get Card Call by Id", notes = "This method returns Card Call By Id", response = CardCallResponse.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Response with actual data"),
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 404, message = "Not Found") })
+    @Override
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response cardCallCardCallByIdGet(@ApiParam(value = "card call id", required = true) @PathParam("cardCallId") Long cardCallId) throws NotFoundException {
+        return cardCallHandler.getCardCallIdHandler(cardCallId);
+    }
+
 
     @GET
     @Path("/departmentList")

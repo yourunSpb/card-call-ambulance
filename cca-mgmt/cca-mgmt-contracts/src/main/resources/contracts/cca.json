@@ -130,6 +130,42 @@
         }
       }
     },
+    "/cardCall/cardCallById": {
+      "get": {
+        "summary": "Get Card Call by Id",
+        "description": "This method returns Card Call By Id",
+        "parameters": [
+          {
+            "name": "cardCallId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format" : "int64",
+            "description": "card call id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response with actual data",
+            "schema": {
+              "$ref": "#/definitions/CardCallResponse"
+            }
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Bad request"
+          },
+          "404": {
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            },
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/cardCall/List": {
       "get": {
         "summary": "Get all the Card Call",
@@ -510,6 +546,53 @@
         "transcript": {
           "type": "string",
           "description": "transcript"
+        }
+      }
+    },
+    "CardCallResponse": {
+      "type": "object",
+      "properties": {
+        "cardCallId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "card call id in system"
+        },
+        "createDateTime": {
+          "type": "string",
+          "description": "Data Time"
+        },
+        "status": {
+          "type": "string",
+          "description": "status"
+        },
+        "updatedBy": {
+          "type": "string",
+          "description": "updatedBy"
+        },
+        "updatedDataTime": {
+          "type": "string",
+          "format": "date",
+          "description": "updatedDateTime"
+        },
+        "brigadeNumber": {
+          "type": "integer",
+          "format": "int64",
+          "description": "brigade number"
+        },
+        "departmentName": {
+          "type": "string",
+          "description": "department name"
+        },
+        "profile": {
+          "type": "string",
+          "description": "profile name"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LookupSectionDetails"
+          },
+          "description": "Section details"
         }
       }
     },
