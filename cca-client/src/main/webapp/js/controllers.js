@@ -72,8 +72,8 @@ ccaClientControllers.controller('CardCallUpdateCtrl', ['$scope',
         return section.sectionId == $scope.currentSection.sectionId;
     }
 
-    $scope.updateAnswer = function(it, questionId, answerValue, answerId) {
-        $scope.populates[it].questionId = questionId
+    $scope.updateAnswer = function(questionId) {
+        $scope.populates[questionId].questionId = questionId
     }
 
     $scope.saveButton = function() {
